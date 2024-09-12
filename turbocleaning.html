@@ -121,11 +121,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4vw;
+            font-size: 1vw;
             max-font-size: 16px;
             padding: 0;
             margin: 0;
             color: black;
+            font-weight: normal; /* Add this line to ensure the text is not bold */
         }
 
         .add-task-btn::after, .delete-btn::after {
@@ -134,6 +135,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            font-weight: normal; /* Add this line to ensure the symbol is not bold */
         }
 
         .delete-btn::after {
@@ -302,43 +304,52 @@
             }
         }
         
-      .footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: nowrap;
-            margin-top: 30px;
-            font-size: 2vw; /* Base font size that scales with viewport width */
-        }
+ .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    max-width: 800px; /* Prevents footer from stretching beyond a fixed width */
+    margin: 60px auto 0; /* Centers the footer and adds margin to the top */
+    padding: 10px 0px;
+    background-color: #ff0066; /* Change as needed */
+    color: white;
+/*    border-radius: 0 30px 0 0; /* Optional, keeps rounded corners */*/
+}
 
-        .footer-left {
-            display: flex;
-            align-items: center;
-            background-color: #17ac38;
-            border-radius: 0 30px 0 0;
-            padding: 1vw;
-            flex: 1;
-        }
+.footer-left {
+    display: flex;
+    align-items: center;
+     background-color: #1bb445;
+         border-radius: 0 30px 0 0; /* Optional, keeps rounded corners */
+    flex: 1;
+    padding: 20px 8px;
+}
+.footer-right {
+    flex: 1;
+    text-align: right;
+    color: black;
+    background-color: white;
+    padding: 10px;
+/*    border-radius: 0 30px 0 0; /* Optional, to match the left side */*/
+}
 
-        .footer-logo {
-            width: 10vw;
-            height: auto;
-            margin-right: 2vw;
-            margin-left: 2vw;
-        }
+.footer-logo {
+    width: 100px; /* Fixed size for the logo */
+    height: auto;
+    margin-right: 20px; /* Adds space between the logo and text */
+}
 
-        .footer-info {
-            color: white;
-            margin-right: 2vw;
-        }
+.footer-info {
+    font-size: 14px; /* Adjusts the font size of the text inside the footer */
+}
 
-        .footer-right {
-            text-align: right;
-            color: black;
-            background-color: #ffffff;
-            padding-right: 1vw;
-            flex: 1;
-        }
+
+
+.footer-right p {
+    margin: 0;
+}
+
 
         @media (min-width: 1200px) {
             .footer {
@@ -382,6 +393,7 @@
         <button class="add-section-btn" onclick="addSection()">Add Section</button>
         <button class="add-textbox-btn" onclick="addTextbox()">Add Textbox</button>
         <button class="download-btn" onclick="printPage()">Download as PDF</button>
+        <button class="switch-color-btn" onclick="switchColor()">Switch Colour</button>
     </div>
 </div>
 
@@ -390,17 +402,17 @@
 
 <p class="editable-area" contenteditable="true">The premises making up the working area... Named Areas and known as: <b>LUNCHROOM; KITCHEN; BOARDROOMS; BATHROOMS; OFFICE AREAS</b></p>
     
- Main Task Section 
+ <!-- Main Task Section  -->
 <div class="container" id="main-container">
-     ADMIN Section 
+     <!-- ADMIN Section  -->
     <div class="section-container">
         <table id="admin-section">
             <tr>
                 <th class="task-cell section-header" contenteditable="true">ADMIN</th>
-                <th class="checkbox-cell" data-label="D">D</th>
-                <th class="checkbox-cell" data-label="W">W</th>
-                <th class="checkbox-cell" data-label="FN">FN</th>
-                <th class="checkbox-cell" data-label="M">M</th>
+                <th class="checkbox-cell" data-label="D"></th>
+                <th class="checkbox-cell" data-label="W"></th>
+                <th class="checkbox-cell" data-label="FN"></th>
+                <th class="checkbox-cell" data-label="M"></th>
                 <th class="action-cell"><button class="add-task-btn" onclick="addTask('admin-section')">+</button></th>
             </tr>
             <tr>
@@ -434,10 +446,10 @@
         <table id="lunchroom-section">
             <tr>
                 <th class="task-cell section-header" contenteditable="true">1.0 LUNCHROOM</th>
-                <th class="checkbox-cell" data-label="D">D</th>
-                <th class="checkbox-cell" data-label="W">W</th>
-                <th class="checkbox-cell" data-label="FN">FN</th>
-                <th class="checkbox-cell" data-label="M">M</th>
+                <th class="checkbox-cell" data-label="D"></th>
+                <th class="checkbox-cell" data-label="W"></th>
+                <th class="checkbox-cell" data-label="FN"></th>
+                <th class="checkbox-cell" data-label="M"></th>
                 <th class="action-cell"><button class="add-task-btn" onclick="addTask('lunchroom-section')">+</button></th>
             </tr>
             <tr>
@@ -471,10 +483,10 @@
         <table id="kitchen-section">
             <tr>
                 <th class="task-cell section-header" contenteditable="true">2.0 KITCHEN</th>
-                <th class="checkbox-cell" data-label="D">D</th>
-                <th class="checkbox-cell" data-label="W">W</th>
-                <th class="checkbox-cell" data-label="FN">FN</th>
-                <th class="checkbox-cell" data-label="M">M</th>
+                <th class="checkbox-cell" data-label="D"></th>
+                <th class="checkbox-cell" data-label="W"></th>
+                <th class="checkbox-cell" data-label="FN"></th>
+                <th class="checkbox-cell" data-label="M"></th>
                 <th class="action-cell"><button class="add-task-btn" onclick="addTask('kitchen-section')">+</button></th>
             </tr>
             <tr>
@@ -572,10 +584,10 @@
         <table id="boardrooms-section">
             <tr>
                 <th class="task-cell section-header" contenteditable="true">3.00 BOARDROOMS</th>
-                <th class="checkbox-cell" data-label="D">D</th>
-                <th class="checkbox-cell" data-label="W">W</th>
-                <th class="checkbox-cell" data-label="FN">FN</th>
-                <th class="checkbox-cell" data-label="M">M</th>
+                <th class="checkbox-cell" data-label="D"></th>
+                <th class="checkbox-cell" data-label="W"></th>
+                <th class="checkbox-cell" data-label="FN"></th>
+                <th class="checkbox-cell" data-label="M"></th>
                 <th class="action-cell"><button class="add-task-btn" onclick="addTask('boardrooms-section')">+</button></th>
             </tr>
             <tr>
@@ -633,10 +645,10 @@
         <table id="bathrooms-section">
             <tr>
                 <th class="task-cell section-header" contenteditable="true">4.00 BATHROOMS</th>
-                <th class="checkbox-cell" data-label="D">D</th>
-                <th class="checkbox-cell" data-label="W">W</th>
-                <th class="checkbox-cell" data-label="FN">FN</th>
-                <th class="checkbox-cell" data-label="M">M</th>
+                <th class="checkbox-cell" data-label="D"></th>
+                <th class="checkbox-cell" data-label="W"></th>
+                <th class="checkbox-cell" data-label="FN"></th>
+                <th class="checkbox-cell" data-label="M"></th>
                 <th class="action-cell"><button class="add-task-btn" onclick="addTask('bathrooms-section')">+</button></th>
             </tr>
             <tr>
@@ -742,10 +754,10 @@
         <table id="security-section">
             <tr>
                 <th class="task-cell section-header" contenteditable="true">Security at Site</th>
-                <th class="checkbox-cell" data-label="D">D</th>
-                <th class="checkbox-cell" data-label="W">W</th>
-                <th class="checkbox-cell" data-label="FN">FN</th>
-                <th class="checkbox-cell" data-label="M">M</th>
+                <th class="checkbox-cell" data-label="D"></th>
+                <th class="checkbox-cell" data-label="W"></th>
+                <th class="checkbox-cell" data-label="FN"></th>
+                <th class="checkbox-cell" data-label="M"></th>
                 <th class="action-cell"><button class="add-task-btn" onclick="addTask('security-section')">+</button></th>
             </tr>
             <tr>
@@ -802,6 +814,36 @@
         <p>Client initial: _______________</p>
     </div>
 </div>
+
+
+<script>
+    let colorSwitched = false;
+
+    function switchColor() {
+        const sectionHeaders = document.querySelectorAll('.section-header');
+        const checkboxCells = document.querySelectorAll('.checkbox-cell');
+        const editableAreaHeaders = document.querySelectorAll('.editable-area-header');
+
+        // Define the two color options
+        const color1 = '#1bb445'; // Green
+        const color2 = '#f6b82e'; // Orange
+
+        // Toggle between colors
+        sectionHeaders.forEach(header => {
+            header.style.backgroundColor = colorSwitched ? color1 : color2;
+        });
+
+        checkboxCells.forEach(cell => {
+            cell.style.backgroundColor = colorSwitched ? color1 : color2;
+        });
+
+        editableAreaHeaders.forEach(header => {
+            header.style.backgroundColor = colorSwitched ? color1 : color2;
+        });
+
+        colorSwitched = !colorSwitched; // Toggle the switch state
+    }
+</script>
 
 <!-- JavaScript for button actions -->
 <script>
@@ -869,10 +911,10 @@
             <table id="${sectionId}">
                 <tr>
                     <th class="task-cell section-header" contenteditable="true">Add your area here</th>
-                    <th class="checkbox-cell" data-label="D">D</th>
-                    <th class="checkbox-cell" data-label="W">W</th>
-                    <th class="checkbox-cell" data-label="FN">FN</th>
-                    <th class="checkbox-cell" data-label="M">M</th>
+                    <th class="checkbox-cell" data-label="D"></th>
+                    <th class="checkbox-cell" data-label="W"></th>
+                    <th class="checkbox-cell" data-label="FN"></th>
+                    <th class="checkbox-cell" data-label="M"></th>
                     <th class="action-cell"><button class="add-task-btn" onclick="addTask('${sectionId}')">+</button></th>
                 </tr>
             </table>
