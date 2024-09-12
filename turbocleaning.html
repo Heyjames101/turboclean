@@ -48,9 +48,20 @@
             text-align: center;
             background-color: #1bb445;
             position: relative;
+            padding: 0;
         }
 
-        /* Custom Checkbox Styles */
+        .checkbox-cell::before {
+            content: attr(data-label);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2.5vw;
+            color: white;
+            pointer-events: none;
+        }
+
         .custom-checkbox {
             appearance: none;
             -webkit-appearance: none;
@@ -64,7 +75,7 @@
             left: 0;
             margin: 0;
             transition-duration: 0.4s;
-            border-radius: 0; /* Add this line to ensure square corners on all devices */
+            border-radius: 0;
         }
 
         .custom-checkbox:hover {
@@ -110,10 +121,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4vw; /* Use viewport width for font size */
-            max-font-size: 16px; /* Cap the maximum font size */
+            font-size: 4vw;
+            max-font-size: 16px;
             padding: 0;
             margin: 0;
+            color: black;
         }
 
         .add-task-btn::after, .delete-btn::after {
@@ -129,8 +141,11 @@
         }
 
         @media (min-width: 600px) {
+            .checkbox-cell::before {
+                font-size: 14px;
+            }
             .add-task-btn, .delete-btn {
-                font-size: 16px; /* Fixed size for larger screens */
+                font-size: 16px;
             }
         }
 
@@ -359,10 +374,10 @@
         <table id="admin-section">
             <tr>
                 <th class="task-cell section-header" contenteditable="true">ADMIN</th>
-                <th class="checkbox-cell">D</th>
-                <th class="checkbox-cell">W</th>
-                <th class="checkbox-cell">FN</th>
-                <th class="checkbox-cell">M</th>
+                <th class="checkbox-cell" data-label="D">D</th>
+                <th class="checkbox-cell" data-label="W">W</th>
+                <th class="checkbox-cell" data-label="FN">FN</th>
+                <th class="checkbox-cell" data-label="M">M</th>
                 <th class="action-cell"><button class="add-task-btn" onclick="addTask('admin-section')">+</button></th>
             </tr>
             <tr>
@@ -396,10 +411,10 @@
         <table id="lunchroom-section">
             <tr>
                 <th class="task-cell section-header" contenteditable="true">1.0 LUNCHROOM</th>
-                <th class="checkbox-cell">D</th>
-                <th class="checkbox-cell">W</th>
-                <th class="checkbox-cell">FN</th>
-                <th class="checkbox-cell">M</th>
+                <th class="checkbox-cell" data-label="D">D</th>
+                <th class="checkbox-cell" data-label="W">W</th>
+                <th class="checkbox-cell" data-label="FN">FN</th>
+                <th class="checkbox-cell" data-label="M">M</th>
                 <th class="action-cell"><button class="add-task-btn" onclick="addTask('lunchroom-section')">+</button></th>
             </tr>
             <tr>
@@ -433,10 +448,10 @@
         <table id="kitchen-section">
             <tr>
                 <th class="task-cell section-header" contenteditable="true">2.0 KITCHEN</th>
-                <th class="checkbox-cell">D</th>
-                <th class="checkbox-cell">W</th>
-                <th class="checkbox-cell">FN</th>
-                <th class="checkbox-cell">M</th>
+                <th class="checkbox-cell" data-label="D">D</th>
+                <th class="checkbox-cell" data-label="W">W</th>
+                <th class="checkbox-cell" data-label="FN">FN</th>
+                <th class="checkbox-cell" data-label="M">M</th>
                 <th class="action-cell"><button class="add-task-btn" onclick="addTask('kitchen-section')">+</button></th>
             </tr>
             <tr>
@@ -534,10 +549,10 @@
         <table id="boardrooms-section">
             <tr>
                 <th class="task-cell section-header" contenteditable="true">3.00 BOARDROOMS</th>
-                <th class="checkbox-cell">D</th>
-                <th class="checkbox-cell">W</th>
-                <th class="checkbox-cell">FN</th>
-                <th class="checkbox-cell">M</th>
+                <th class="checkbox-cell" data-label="D">D</th>
+                <th class="checkbox-cell" data-label="W">W</th>
+                <th class="checkbox-cell" data-label="FN">FN</th>
+                <th class="checkbox-cell" data-label="M">M</th>
                 <th class="action-cell"><button class="add-task-btn" onclick="addTask('boardrooms-section')">+</button></th>
             </tr>
             <tr>
@@ -595,10 +610,10 @@
         <table id="bathrooms-section">
             <tr>
                 <th class="task-cell section-header" contenteditable="true">4.00 BATHROOMS</th>
-                <th class="checkbox-cell">D</th>
-                <th class="checkbox-cell">W</th>
-                <th class="checkbox-cell">FN</th>
-                <th class="checkbox-cell">M</th>
+                <th class="checkbox-cell" data-label="D">D</th>
+                <th class="checkbox-cell" data-label="W">W</th>
+                <th class="checkbox-cell" data-label="FN">FN</th>
+                <th class="checkbox-cell" data-label="M">M</th>
                 <th class="action-cell"><button class="add-task-btn" onclick="addTask('bathrooms-section')">+</button></th>
             </tr>
             <tr>
@@ -704,10 +719,10 @@
         <table id="security-section">
             <tr>
                 <th class="task-cell section-header" contenteditable="true">Security at Site</th>
-                <th class="checkbox-cell">D</th>
-                <th class="checkbox-cell">W</th>
-                <th class="checkbox-cell">FN</th>
-                <th class="checkbox-cell">M</th>
+                <th class="checkbox-cell" data-label="D">D</th>
+                <th class="checkbox-cell" data-label="W">W</th>
+                <th class="checkbox-cell" data-label="FN">FN</th>
+                <th class="checkbox-cell" data-label="M">M</th>
                 <th class="action-cell"><button class="add-task-btn" onclick="addTask('security-section')">+</button></th>
             </tr>
             <tr>
@@ -831,10 +846,10 @@
             <table id="${sectionId}">
                 <tr>
                     <th class="task-cell section-header" contenteditable="true">Add your area here</th>
-                    <th class="checkbox-cell">D</th>
-                    <th class="checkbox-cell">W</th>
-                    <th class="checkbox-cell">FN</th>
-                    <th class="checkbox-cell">M</th>
+                    <th class="checkbox-cell" data-label="D">D</th>
+                    <th class="checkbox-cell" data-label="W">W</th>
+                    <th class="checkbox-cell" data-label="FN">FN</th>
+                    <th class="checkbox-cell" data-label="M">M</th>
                     <th class="action-cell"><button class="add-task-btn" onclick="addTask('${sectionId}')">+</button></th>
                 </tr>
             </table>
