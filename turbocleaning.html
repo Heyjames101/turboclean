@@ -94,7 +94,7 @@
             background-color: #f2f2f2;
             padding: 0;
             position: relative;
-            min-width: 30px; /* Ensure a minimum width for the cell */
+            min-width: 30px;
         }
 
         .add-task-btn, .delete-btn {
@@ -110,19 +110,28 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
+            font-size: 4vw; /* Use viewport width for font size */
+            max-font-size: 16px; /* Cap the maximum font size */
             padding: 0;
             margin: 0;
-            text-align: center;
-            line-height: 1;
         }
 
-        .add-task-btn:hover {
-            background-color: #1bb445;
+        .add-task-btn::after, .delete-btn::after {
+            content: "+";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
-        .delete-btn:hover {
-            background-color: #f6b82e;
+        .delete-btn::after {
+            content: "-";
+        }
+
+        @media (min-width: 600px) {
+            .add-task-btn, .delete-btn {
+                font-size: 16px; /* Fixed size for larger screens */
+            }
         }
 
         /* Dropdown style */
@@ -311,12 +320,6 @@
             width: 50%;
         }
         @media (max-width: 600px) {
-            .add-task-btn, .delete-btn {
-                font-size: 14px; /* Smaller font size for mobile screens */
-            }
-            .action-cell {
-                min-width: 25px; /* Slightly smaller minimum width for mobile */
-            }
             .footer {
                 flex-direction: column;
                 align-items: flex-start;
