@@ -94,25 +94,27 @@
             background-color: #f2f2f2;
             padding: 0;
             position: relative;
+            min-width: 30px; /* Ensure a minimum width for the cell */
         }
 
         .add-task-btn, .delete-btn {
             background-color: transparent;
-          width: 100%;
-          height: 100%;
-          border: none;
-          cursor: pointer;
-          transition-duration: 0.4s;
-          position: absolute;
-          top: 0;
-          left: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 16px; /* Adjust this value as needed */
-          padding: 0;
-          margin: 0;
-          text-align: center;
+            width: 100%;
+            height: 100%;
+            border: none;
+            cursor: pointer;
+            transition-duration: 0.4s;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            line-height: 1;
         }
 
         .add-task-btn:hover {
@@ -310,8 +312,11 @@
         }
         @media (max-width: 600px) {
             .add-task-btn, .delete-btn {
-            font-size: 14px; /* Smaller font size for mobile screens */
-          }
+                font-size: 14px; /* Smaller font size for mobile screens */
+            }
+            .action-cell {
+                min-width: 25px; /* Slightly smaller minimum width for mobile */
+            }
             .footer {
                 flex-direction: column;
                 align-items: flex-start;
