@@ -319,20 +319,22 @@
 
         @media (max-width: 600px) {
               .delete-textbox-btn {
-                color: black !important;
+                color: black !important; /* Force black color on mobile */
             }
 
             .footer {
-                font-size: 10px;
+                font-size: 10px; /* Min font size for smaller screens */
             }
             .footer-info {
-    margin: 0px 10px 0px 0px;
-}
+                margin: 0px 5px 0px 10pxpx;
+            }
             .footer-logo {
-                width: 30px;
+                width: 30px; /* Min logo size for smaller screens */
+                height: 30px;
+                margin-right: 10px;
             }
             .footer-left {
-    padding: 8px 25px 8px 8px;
+                padding: 8px 25px 8px 8px;
             }
             .footer-right {
                 padding: 10px 0px 10px 0px;
