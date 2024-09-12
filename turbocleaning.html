@@ -278,7 +278,7 @@
         .delete-textbox-btn{
             padding: 5px 12px;
             background-color: #f2f2f2;
-            color: black;
+            color: black; /* Ensure the text color is always black */
             border: none;
             cursor: pointer;
             font-size: 12px;
@@ -295,13 +295,7 @@
             color: black; /* Ensure the text color remains black on hover */
         }
 
-        /* Add this media query for mobile screens */
-        @media (max-width: 600px) {
-            .delete-textbox-btn {
-                color: black !important; /* Force black color on mobile */
-            }
-        }
-        
+
 
         .delete-textbox-btn:hover, .add-textbox-btn:hover {
             background-color: #f6b82e;
@@ -383,6 +377,10 @@
         }
 
         @media (max-width: 600px) {
+              .delete-textbox-btn {
+                color: black !important; /* Force black color on mobile */
+            }
+
             .footer {
                 font-size: 10px; /* Min font size for smaller screens */
             }
