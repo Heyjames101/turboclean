@@ -155,6 +155,30 @@
             }
         }
 
+        .main-title-heading
+                {
+                    margin-top: 40px;
+                    text-align: center;
+                    font-size: 25px;
+                    background-color: transparent;
+                    font-weight: bold;
+                }
+.main-task-title-heading{
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                    text-align: center;
+                    font-size: 25px;
+                    background-color: transparent;
+                    font-weight: bold;
+}
+.main-pricing-title-heading{
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                    text-align: center;
+                    font-size: 25px;
+                    background-color: transparent;
+                    font-weight: bold;
+}
         /* Dropdown style */
          .dropdown-container {
               position: relative;
@@ -413,7 +437,7 @@
             }
 
 /*price*/
-                
+
 
             .table-pricing {
                 width: 100%;
@@ -444,6 +468,7 @@
             .section-container-pricing {
               margin: 20px 0px;
             }
+
 
             .section-header-pricing {
               background-color: #1bb445;
@@ -617,13 +642,13 @@
                 flex-grow: 1;
             }
             .price-cell {
-    width: 100%;
-    background-color: #f2f2f2; /* You can change this color to match your design */
-    word-wrap: break-word;
-    text-align: left;
-    padding: 8px;
-    box-sizing: border-box;
-}
+                    width: 100%;
+                    background-color: #f2f2f2; /* You can change this color to match your design */
+                    word-wrap: break-word;
+                    text-align: left;
+                    padding: 8px;
+                    box-sizing: border-box;
+            }
 
 
             .delete-textbox-btn-pricing {
@@ -655,6 +680,64 @@
                     display: none;
                 }
             }
+/**Agreement css*//
+
+        .agreement {
+            font-size: 11px;
+            background-color: #32a852;
+            border-color: black;
+            border-radius: 0;
+            padding: 10px;
+        }
+
+
+        .agreement-schedule-table, 
+        .agreement-schedule-row th, 
+        .agreement-schedule-row td {
+            margin: 0; 
+            padding: 0; /* Eliminate padding from table rows and cells */
+            border-spacing: 0; /* Remove any spacing between cells */
+            border-collapse: collapse; /* Ensure borders collapse */
+            border: none; /* Optional: Remove border if needed */
+        }
+
+        .agreement-schedule-table tr {
+            margin: 0; 
+            padding: 0; 
+            border: none; /* Remove any borders if causing spacing */
+        }
+
+        .agreement-schedule-table th, 
+        .agreement-schedule-table td {
+            padding: 10px ; /* Minimal padding */
+            border: none; /* Adjust or remove as necessary */
+            background-color: transparent; /* Keep background consistent */
+        }
+
+        .agreement-schedule-table {
+            margin-top: 0px; /* Remove top margin */
+        }
+
+        .agreement-schedule-table th, .agreement-schedule-table td {
+            border: none; /* Remove borders */
+        }
+
+
+        .agreement-schedule-row th, .agreement-schedule-row td {
+            border: none; /* Remove borders */
+            padding: 10px ; /* Minimal padding */
+            border: none; /* Adjust or remove as necessary */
+            background-color: #f2f2f2; /* Keep background consistent */
+        }
+        .agreement-schedule-subtitle-table, .agreement-schedule-subtitle-row {
+            margin: 0px; 
+            padding: 10px; /* Eliminate padding from table rows and cells */
+            border-spacing: 0; /* Remove any spacing between cells */
+            border-collapse: collapse; /* Ensure borders collapse */
+            border: none; /* Optional: Remove border if needed */
+            background-color: #f2f2f2; /* Keep background consistent */
+
+        }
 
 /*footer*/
 
@@ -664,7 +747,7 @@
         align-items: center;
         flex-wrap: nowrap;
         max-width: 800px; /* Prevents footer from stretching beyond a fixed width */
-        margin: 20px auto 0; /* Centers the footer and adds margin to the top */
+        margin: 20px auto 30px; /* Centers the footer and adds margin to the top */
         padding: 10px 0px;
         background-color: white; /* Change as needed  #ff0066*/
         color: white;
@@ -746,8 +829,49 @@
                     padding: 10px 0px 10px 0px;
                 }
             }
+
+/*    signature*/
+.signature-section {
+    margin: 40px 0;
+    padding: 20px;
+    border: 0px solid #000; /* Simple border to replicate the formal look */
+    border-radius: 0px;
+    background-color: #fff; /* Clean white background */
+    font-family: 'Montserrat', sans-serif;
+}
+
+.signature-title {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.signature-content {
+    width: 100%;
+}
+.signature-row{
+    margin-top: 30px;
+}
+
+.signature-table td {
+    padding: 5px;
+    font-size: 14px;
+    color: #000;
+}
+
+
+.signature-end-row{
+    font-size: 14px;
+     padding: 5px;
+}
+
+
+
     </style>
 
+ 
 </head>
 
 <body>
@@ -769,7 +893,7 @@
     </div>
 
 
-<h1 style="text-align: center;" contenteditable="true">CLEANING SCHEDULE</h1>
+<div class= "main-task-title-heading" contenteditable="true">CLEANING SCHEDULE</div>
 
 <p class="editable-area" contenteditable="true">The premises making up the working area... Named Areas and known as: <b>Entrance; Retail Shop & Changing Room; Storage Room & Kitchenette;</b></p>
     
@@ -1021,19 +1145,9 @@
             <td class="action-cell"><button class="delete-btn" onclick="deleteRow(this)">-</button></td>
         </tr>
     </table>
+    </div>
 </div>
 
-
-
-
-
-
-
-
-<!-- Add similar blocks for Retail Shop, Storage Room, Quality Assurance Check, and Security as needed -->
-
-
-</div>
 <!-- add Textbox Container -->
         <div class="editable-textbox-container">
           
@@ -1046,7 +1160,9 @@
         </div>
         </div>
 
- <h1 style="text-align: center;" contenteditable="true">OTHER SERVICES (Up on request and quote)</h1>
+
+
+
 <!-- Main Task Section for Other Services -->
     <div class="container-other-services" id="main-container-other-services">
     <!-- FLOOR CARE SERVICE Section -->
@@ -1249,9 +1365,16 @@
     </div>
 
         </div>
-    <h1 style="text-align: center;" contenteditable="true">PRICING SCHEDULE</h1>
+
+
+
 <!-- Main Task Section for Pricing -->
+
+
 <div class="container-pricing" id="main-container-pricing">
+
+        <div class= "main-title-heading" contenteditable="true">PRICING SCHEDULE</div>
+
     <!-- Pricing Schedule Section -->
     <div class="section-container-pricing">
         <table id="pricing-schedule-section-pricing">
@@ -1334,8 +1457,259 @@
 </div>
 
 
+<!-- footer -->
+    <div class="footer">
+        <div class="footer-left">
+            <img src="Pages-from-Turbo-Cleaning-logo.png" alt="Turbo Logo" class="footer-logo">
+            <div class="footer-info">
+                <div>TURBO CLEANING LIMITED</div>
+                <div>turbo.cleaning.nz@gmail.com</div>
+            </div>
+        </div>
+        <div class="footer-right">
+            <p>Client initial: _____________</p>
+        </div>
+    </div>
 
 
+<div class="agreement">
+            <div class= "main-pricing-title-heading" contenteditable="true">MAINTENANCE AGREEMENT</div>
+
+    <div class="agreement-terms-table">
+            <table class="agreement-schedule-table" style="width: 100%;">
+                <tr class="agreement-schedule-subtitle-row">
+                <td style="width: 100%;" contenteditable="true">THIS AGREEMENT made this _____14nd__ day of _____August______ 2024 
+                <br><br>
+                   Effective from ________18th________ day of ______ September______ 2024 (“the effective date”)
+                <br><br>
+                   BY AND BETWEEN RURAL CONNECTIVITY GROUP LIMITED (“THE CLIENT”)
+                <br><br>
+                   AND TURBO CLEANING LIMITED ENTAILS THE FOLLOWING:
+                </td>
+                </tr>
+            </table>
+    </div>
+
+
+    <div class="agreement-terms-table">
+
+        <!-- 1 ---->
+
+                <table class="agreement-schedule-table" style="width: 100%;">
+
+                    <tr class="agreement-schedule-row">
+                        <th style="width: 8%;" contenteditable="true">1)</th>
+                        <th style="width: 90%;" contenteditable="true"> SERVICE AND LOCATION</th>
+                    </tr>
+                </table>
+                <table class="agreement-schedule-table" style="width: 100%;">
+                    <tr class="agreement-schedule-row">
+                        <td style="width: 10%;" contenteditable="true"></td>
+                        <td style="width: 10%; text-align: center;" contenteditable="true"></td>
+                        <td style="width: 80%;" contenteditable="true">Turbo Cleaning Limited is contracted to perform cleaning services, details of which are in the specifications of this agreement.  The service will be performed at the location(s):</td>
+                    </tr>
+                    <tr class="agreement-schedule-row">
+                        <td style="width: 10%;" contenteditable="true"></td>
+                        <td style="width: 10%; text-align: center;" contenteditable="true"></td>
+                        <td style="width: 80%;" contenteditable="true">4 Jimmy Ward Crescent, Auckland Airport, Auckland 2022
+                        </td>
+                    </tr> 
+                                    <tr class="agreement-schedule-row">
+                        <td style="width: 10%;" contenteditable="true"></td>
+                        <td style="width: 10%; text-align: center;" contenteditable="true"></td>
+                        <td style="width: 80%;" contenteditable="true">Contact Number of the client: ___N/A_________
+                        </td>
+                    </tr> 
+                </table>
+
+        <!-- 2 ---->
+            <table class="agreement-schedule-table" style="width: 100%;">
+                <tr class="agreement-schedule-row">
+                    <th style="width: 8%;" contenteditable="true">2)</th>
+                    <th style="width: 90%;" contenteditable="true"> NUMBER OF TIMES PER WEEK</th>
+                </tr>
+            </table>
+            <table class="agreement-schedule-table" style="width: 100%;">
+                <tr class="agreement-schedule-row">
+                    <td style="width: 10%;" contenteditable="true"></td>
+                    <td style="width: 10%; text-align: center;" contenteditable="true"></td>
+                    <td style="width: 80%;" contenteditable="true">The full service will be performed two times (2) per week.</td>
+                </tr>
+    
+            </table>
+
+        <!-- 3 ---->
+            <table class="agreement-schedule-table" style="width: 100%;">
+                <tr class="agreement-schedule-row">
+                    <th style="width: 8%;" contenteditable="true">3)</th>
+                    <th style="width: 90%;" contenteditable="true">PAYMENT REQUIREMENTS</th>
+                </tr>
+            </table>
+            <table class="agreement-schedule-table" style="width: 100%;">
+                <tr class="agreement-schedule-row">
+                    <td style="width: 10%;" contenteditable="true"></td>
+                    <td style="width: 10%; text-align: center;" contenteditable="true">a)</td>
+                    <td style="width: 80%;" contenteditable="true">For the performance by Turbo Cleaning Limited of the service described, the client agrees to pay Turbo Cleaning Limited the monthly sum stated on the pricing schedule, 20th of the month following the invoice date.  Invoices are raised on the last day of the calendar month. (Credits for public holidays plus any shutdown periods between Christmas/New Year and Easter have been taken into account in the calculation of the monthly price.<strong> However, if service is provided three days a week or less an alternative clean will be arranged should a cleaning day fall on a public holiday).</td>
+                </tr>
+                <tr class="agreement-schedule-row">
+                    <td style="width: 10%;" contenteditable="true"></td>
+                    <td style="width: 10%; text-align: center;" contenteditable="true">b)</td>
+                    <td style="width: 80%;" contenteditable="true">Turbo Cleaning Ltd reserves the right to charge penalty interest at 12% plus any third-party debt collection fees if payment is not made in accordance with these payment terms.  No purported claim or dispute raised by the Client shall be a ground for the Client withholding payment of any monies owed to Turbo Cleaning Ltd from the provision of Services completed or partially completed by Turbo Cleaning Ltd to the Client. Nor shall purported claim or dispute confer on the Client any right to offset any payment owed to Turbo Cleaning Ltd. In the event that it is necessary for Turbo Cleaning Ltd to seek legal remedies to obtain payment of amounts owed to it by the Client, the Client agrees to reimburse Turbo Cleaning Ltd for all its legal expenses when Turbo Cleaning Ltd is successful in obtaining judgment against the Client for any or all outstanding amounts.
+                    </td>
+                </tr> 
+            </table>
+
+        <!-- 4 ---->
+            <table class="agreement-schedule-table" style="width: 100%;">
+                <tr class="agreement-schedule-row">
+                    <th style="width: 8%;" contenteditable="true">4)</th>
+                    <th style="width: 90%;" contenteditable="true">CLEANING SCHEDULE</th>
+                </tr>
+            </table>
+            <table class="agreement-schedule-table" style="width: 100%;">
+                <tr class="agreement-schedule-row">
+                    <td style="width: 10%;" contenteditable="true"></td>
+                    <td style="width: 10%; text-align: center;" contenteditable="true">a)</td>
+                    <td style="width: 80%;" contenteditable="true">The Contractor will ensure execution of the Cleaning Services in accordance with CLEANING SCHEDULE 1.</td>
+                </tr>
+                <tr class="agreement-schedule-row">
+                    <td style="width: 10%;" contenteditable="true"></td>
+                    <td style="width: 10%; text-align: center;" contenteditable="true">b)</td>
+                    <td style="width: 80%;" contenteditable="true">Cleaning Services will not be provided to the Client on Public Holidays, unless specified and agreed to between the Client and Turbo Cleaning Ltd at an agreed charge.</td>
+                </tr> 
+            </table>
+
+        <!-- 5 ---->
+                <table class="agreement-schedule-table" style="width: 100%;">
+                    <tr class="agreement-schedule-row">
+                        <th style="width: 8%;" contenteditable="true">5)</th>
+                        <th style="width: 90%;" contenteditable="true">TERMS OF AGREEMENT</th>
+                    </tr>
+                </table>
+                    <table class="agreement-schedule-table" style="width: 100%;">
+                        <tr class="agreement-schedule-row">
+                            <td style="width: 10%;" contenteditable="true"></td>
+                            <td style="width: 10%; text-align: center;" contenteditable="true">a)</td>
+                            <td style="width: 80%;" contenteditable="true">The initial term of this agreement shall be for one (1) year from the effective date and thereafter shall be automatically extended for a one (1) year period on the same terms and conditions – unless either party gives written notice of termination at least 30 days in advance.</td>
+                        </tr>
+                        <tr class="agreement-schedule-row">
+                            <td style="width: 10%;" contenteditable="true"></td>
+                            <td style="width: 10%; text-align: center;" contenteditable="true">b)</td>
+                            <td style="width: 80%;" contenteditable="true">If timely notice is given for termination, this agreement shall expire at midnight on the last day of the 30 days notice.</td>
+                        </tr>
+                    </table>
+        
+        <!-- 6 ---->
+                <table class="agreement-schedule-table" style="width: 100%;">
+                    <tr class="agreement-schedule-row">
+                        <th style="width: 8%;" contenteditable="true">6)</th>
+                        <th style="width: 90%;" contenteditable="true">TERMS OF AGREEMENT</th>
+                    </tr>
+                </table>
+                    <table class="agreement-schedule-table" style="width: 100%;">
+                        <tr class="agreement-schedule-row">
+                            <td style="width: 10%;" contenteditable="true"></td>
+                            <td style="width: 10%; text-align: center;" contenteditable="true">a)</td>
+                            <td style="width: 80%;" contenteditable="true">Non-performance is defined as the failure, neglect or refusal to perform any act stipulated under the agreement or as outlined in the Cleaning Schedule. Before any termination for non-performance is effective, the terminating party must give the other party written notice, as described herein, specifying in detail the nature of any defect. Upon the effective date of the receipt of notice of non-performance, Turbo Cleaning Limited shall have fifteen (15) working days in which to rectify the defect. In the event the defect is not rectified at the end of the fifteen (15th) working day from the effective date of such notice, the terminating party shall provide written notification, as described herein, to the non-terminating party of the failure to rectify the defect. In the event the second notice is not received within the specified time, all deficiencies will be deemed to have been rectified. If the second notice is received within the specified time and the defect remained unrectified at the time of the notice, this agreement shall terminate fifteen (15) days from the date of the second notice.</td>
+                        </tr>
+                        <tr class="agreement-schedule-row">
+                            <td style="width: 10%;" contenteditable="true"></td>
+                            <td style="width: 10%; text-align: center;" contenteditable="true">b)</td>
+                            <td style="width: 80%;" contenteditable="true">All notices between the Client and Turbo Cleaning Limited shall be in writing. All other notices, including notices personally delivered to individuals performing services under this agreement, shall be ineffective.</td>
+                        </tr>
+                    </table>
+
+        <!-- 7 ---->
+                <table class="agreement-schedule-table" style="width: 100%;">
+                    <tr class="agreement-schedule-row">
+                        <th style="width: 8%;" contenteditable="true">7)</th>
+                        <th style="width: 90%;" contenteditable="true">AGREEMENT ALTERATIONS</th>
+                    </tr>
+                </table>
+                    <table class="agreement-schedule-table" style="width: 100%;">
+                        <tr class="agreement-schedule-row">
+                            <td style="width: 10%;" contenteditable="true"></td>
+                            <td style="width: 10%; text-align: center;" contenteditable="true">a)</td>
+                            <td style="width: 80%;" contenteditable="true">From time to time, as the Client and Turbo Cleaning Limited may agree, the amount to be paid by the Client may be increased or decreased to reflect an increase or decrease in the area of space serviced and the kind, amount or frequency of service to be rendered. In the event mutual agreement relating to frequency of service, type of service, space serviced or amount to be paid cannot be reached, the frequency of service, type of service, space serviced or amount to be paid shall remain unchanged.</td>
+                        </tr>
+                    </table>
+
+        <!-- 8 ---->
+                <table class="agreement-schedule-table" style="width: 100%;">
+                    <tr class="agreement-schedule-row">
+                        <th style="width: 8%;" contenteditable="true">8)</th>
+                        <th style="width: 90%;" contenteditable="true">MISCELLANEOUS</th>
+                    </tr>
+                </table>
+                    <table class="agreement-schedule-table" style="width: 100%;">
+                        <tr class="agreement-schedule-row">
+                            <td style="width: 10%;" contenteditable="true"></td>
+                            <td style="width: 10%; text-align: center;" contenteditable="true">a)</td>
+                            <td style="width: 80%;" contenteditable="true">The price under this agreement (or any amended or updated price under the agreement) shall, effective from 12 months after commencement date of this agreement, and thereafter annually, may be increased by up to 3% before each anniversary date by agreement between the Client and Turbo Cleaning Limited.</td>
+                        </tr>
+
+                        <tr class="agreement-schedule-row">
+                            <td style="width: 10%;" contenteditable="true"></td>
+                            <td style="width: 10%; text-align: center;" contenteditable="true">b)</td>
+                            <td style="width: 80%;" contenteditable="true">GST shall be increased or decreased as legislated by the New Zealand Government.</td>
+                        </tr>
+                         <tr class="agreement-schedule-row">
+                            <td style="width: 10%;" contenteditable="true"></td>
+                            <td style="width: 10%; text-align: center;" contenteditable="true">c)</td>
+                            <td style="width: 80%;" contenteditable="true">Obligatory employer increases in New Zealand Superannuation, KiwiSaver, ACC (or equivalent) levies and relevant wage increases to the minimum wage scale as passed by the Ministry of Business, Innovation and Employment will be passed on to the Client, to the extent that such increases have not been included in any annual increase under clause 8(a) above.</td>
+                        </tr>
+                        <tr class="agreement-schedule-row">
+                            <td style="width: 10%;" contenteditable="true"></td>
+                            <td style="width: 10%; text-align: center;" contenteditable="true">d)</td>
+                            <td style="width: 80%;" contenteditable="true">The applicable laws governing this agreement are the laws in New Zealand.</td>
+                        </tr>
+                        <tr class="agreement-schedule-row">
+                            <td style="width: 10%;" contenteditable="true"></td>
+                            <td style="width: 10%; text-align: center;" contenteditable="true">e)</td>
+                            <td style="width: 80%;" contenteditable="true">Reasonable expenses, costs or disbursements incurred by Turbo Cleaning in recovering any outstanding monies under this Agreement shall be borne by the Client.</td>
+                        </tr>
+                    </table>
+
+    </div>
+
+</div>
+
+<div class="signature-section">
+            <div class="signature-title" contenteditable="true">I have fully read and understand the terms of the maintenance agreement and payment conditions.</div>
+    <div class="signature-content">
+        <table class="signature-table" style="width: 100%; margin-top: 30px;">
+            <tr>
+                <td style="width: 50%; text-align: left;">
+                    <div class="signature-row" contenteditable="true">Signed by:</div>
+                    <div class="signature-row" contenteditable="true">Capri (Australia) Pty Ltd</div>
+                    <div class="signature-row" contenteditable="true">___________________________</div>
+                </td>
+                <td style="width: 50%; text-align: left;">
+                    <div class="signature-row" contenteditable="true">Signed by:</div>
+                    <div class="signature-row" contenteditable="true">TURBO CLEANING LIMITED</div>
+                    <div class="signature-row" contenteditable="true">___________________________</div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 50%; text-align: left;">
+                    <div class="signature-row" contenteditable="true">Signed for and on behalf of:</div>
+                    <div class="signature-row" contenteditable="true">Capri (Australia) Pty Ltd</div>
+                    <div class="signature-row" contenteditable="true">___________________________</div>
+                    <div class="signature-row" contenteditable="true">[Print Name]</div>
+                </td>
+                <td style="width: 50%; text-align: left;">
+                    <div class="signature-row" contenteditable="true">Signed for and on behalf of:</div>
+                    <div class="signature-row" contenteditable="true">TURBO CLEANING LIMITED</div>
+                    <div class="signature-row" contenteditable="true">___________________________</div>
+                    <div class="signature-row" contenteditable="true">[Print Name]</div>
+                </td>
+            </tr>
+        </table>
+
+        <div class="signature-end-row" style="text-align: left; margin-top: 30px;" contenteditable="true">On this _____14th______ day of _____September_______ 2024
+        </div>
+    </div>
+</div>
 
 <!-- footer -->
     <div class="footer">
@@ -1350,6 +1724,7 @@
             <p>Client initial: _____________</p>
         </div>
     </div>
+
 
 <!-- -- JavaScript colour switch -- -->
     <script>
