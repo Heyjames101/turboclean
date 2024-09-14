@@ -616,6 +616,15 @@
                 margin: 0;
                 flex-grow: 1;
             }
+            .price-cell {
+    width: 100%;
+    background-color: #f2f2f2; /* You can change this color to match your design */
+    word-wrap: break-word;
+    text-align: left;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
 
             .delete-textbox-btn-pricing {
                 padding: 5px 12px;
@@ -1416,40 +1425,52 @@
             sectionContainer.parentNode.removeChild(sectionContainer);
         }
 
-        function addTaskOtherServices(sectionId) {
-            var table = document.getElementById(sectionId);
-            var newRow = table.insertRow(-1);
+function addTaskOtherServices(sectionId) {
+    var table = document.getElementById(sectionId);
+    var newRow = table.insertRow(-1);
 
-            var taskCell = newRow.insertCell(0);
-            var actionCell = newRow.insertCell(1);
+    // Assign a unique ID to each row
+    var rowId = "other-services-row-" + Date.now();
+    newRow.setAttribute("id", rowId);
 
-            taskCell.setAttribute("contenteditable", "true");
-            taskCell.textContent = "New Task";
-            taskCell.className = "task-cell-other-services";
+    // Make the row draggable
+    newRow.setAttribute("draggable", "true");
+    newRow.setAttribute("ondragstart", "dragStart(event)");
+    newRow.setAttribute("ondragover", "allowDrop(event)");
+    newRow.setAttribute("ondrop", "drop(event)");
 
-            actionCell.innerHTML = '<button class="delete-btn-other-services" onclick="deleteRowOtherServices(this)">-</button>';
-            actionCell.className = "action-cell-other-services";
-        }
+    // Create cells for the new row
+    var taskCell = newRow.insertCell(0);
+    var actionCell = newRow.insertCell(1);
 
-        function addSectionOtherServices() {
-            var container = document.getElementById("main-container-other-services");
-            var newSection = document.createElement("div");
-            newSection.className = "section-container-other-services";
-            
-            var sectionId = "section-" + Date.now();
-            
-            newSection.innerHTML = `
-                <table id="${sectionId}">
-                        <tr id="row-unique-id" draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+    taskCell.setAttribute("contenteditable", "true");
+    taskCell.textContent = "New Task";
+    taskCell.className = "task-cell-other-services";
 
-                        <th class="task-cell-other-services section-header-other-services" contenteditable="true">Add your area here</th>
-                        <th class="action-cell-other-services"><button class="add-task-btn-other-services" onclick="addTaskOtherServices('${sectionId}')">+</button></th>
-                    </tr>
-                </table>
-            `;
-            
-            container.appendChild(newSection);
-        }
+    actionCell.innerHTML = '<button class="delete-btn-other-services" onclick="deleteRowOtherServices(this)">-</button>';
+    actionCell.className = "action-cell-other-services";
+}
+
+
+function addSectionOtherServices() {
+    var container = document.getElementById("main-container-other-services");
+    var newSection = document.createElement("div");
+    newSection.className = "section-container-other-services";
+
+    var sectionId = "other-services-section-" + Date.now();
+
+    newSection.innerHTML = `
+        <table id="${sectionId}">
+            <tr id="row-unique-id" draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+                <th class="task-cell-other-services section-header-other-services" contenteditable="true">Add your area here</th>
+                <th class="action-cell-other-services"><button class="add-task-btn-other-services" onclick="addTaskOtherServices('${sectionId}')">+</button></th>
+            </tr>
+        </table>
+    `;
+
+    container.appendChild(newSection);
+}
+
 
         function deleteTextboxOtherServices(button) {
             button.closest('.editable-textbox').remove();
@@ -1504,26 +1525,44 @@
                         row.remove();
                     }
 
-                    function addTaskPricing(sectionId) {
-                        const table = document.getElementById(sectionId);
-                        const newRow = table.insertRow(-1); 
+function addTaskPricing(sectionId) {
+    var table = document.getElementById(sectionId);
+    var newRow = table.insertRow(-1);
 
-                        const taskCell = newRow.insertCell(0);
-                        taskCell.className = "task-cell-pricing";
-                        taskCell.contentEditable = "true";
-                        taskCell.innerText = "New Task Description";
+    // Assign a unique ID to each row
+    var rowId = "pricing-row-" + Date.now();
+    newRow.setAttribute("id", rowId);
 
-                        const amountCell = newRow.insertCell(1);
-                        amountCell.className = "task-cell-pricing";
-                        amountCell.contentEditable = "true";
-                        amountCell.innerText = "$0.00";
+    // Make the row draggable
+    newRow.setAttribute("draggable", "true");
+    newRow.setAttribute("ondragstart", "dragStart(event)");
+    newRow.setAttribute("ondragover", "allowDrop(event)");
+    newRow.setAttribute("ondrop", "drop(event)");
 
-                        const actionCell = newRow.insertCell(2);
-                        actionCell.className = "action-cell-pricing";
-                        actionCell.innerHTML = '<button class="delete-btn-pricing" onclick="deleteRowPricing(this)">-</button>';
-                    }
+    // Create cells for the new row
+    var taskCell = newRow.insertCell(0);
+    var priceCell = newRow.insertCell(1);
+    var actionCell = newRow.insertCell(2);
 
-                    function addPricing() {
+    // Set content for task cell (editable)
+    taskCell.setAttribute("contenteditable", "true");
+    taskCell.textContent = "New Pricing Task";
+    taskCell.className = "task-cell-pricing";
+
+    // Set content for the price cell (editable)
+    priceCell.setAttribute("contenteditable", "true");
+    priceCell.textContent = "$0.00";
+    priceCell.className = "price-cell";
+
+    // Set content for action cell (delete button)
+    actionCell.innerHTML = '<button class="delete-btn-pricing" onclick="deleteRowPricing(this)">-</button>';
+    actionCell.className = "action-cell-pricing";
+}
+
+
+
+
+    function addPricing() {
     var container = document.getElementById("main-container-pricing");
     var newSection = document.createElement("div");
     newSection.className = "section-container-pricing";
@@ -1734,6 +1773,8 @@ function addSection() {
 
         container.appendChild(newSection);
     }
+
+
 
 
   // Function to handle dragging
