@@ -165,6 +165,39 @@ body {
     z-index: 3;
 }
 
+                @media screen and (max-width: 800px) {
+                .cover-main-title {
+                    font-size: 8vw; /* Adjust for smaller screens */
+                    font-weight: 200;
+                    max-width: 400px;
+                }
+                    .cover-header-img img {
+                    width: 100%;       /* Scale up to 80% of the viewport width */
+                    height: auto;      /* Maintain aspect ratio */
+                    max-width: 100%;   /* Allow image to grow up to 100% of its container */
+                    max-height: none;  /* Remove height restriction */
+                    object-fit: contain; /* Ensures the image fits without distortion */
+                     z-index: 3;
+                }
+                .cover-container {
+                    position: relative;
+                    width: 100%; /* Make container responsive */
+                    height: 100%; /* Example height, adjust as necessary */
+                    background-color: white; /* For visual reference */
+                    z-index: 1;
+                    background-color: red;
+                      outline: #1bb445 solid 10px;
+
+                }
+                .cover-logo-img  {
+                      width: 40px;
+                    height: 40px;
+                }
+                 .cover-logo-img img  {
+                      width: 40px;
+                    height: 40px;
+                }
+            }
 /* Media query to stop scaling when width is over 800px */
 @media screen and (min-width: 800px) {
     .cover-title-container {
@@ -203,6 +236,8 @@ body {
     }
 
 }
+
+
 
     </style>
 
