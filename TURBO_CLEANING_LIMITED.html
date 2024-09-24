@@ -9,6 +9,9 @@
     <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+/*colour grey:# f2f2f2* green #1bb445 orange #f6b82e/
 
     /* Universal */
                 body {
@@ -53,6 +56,12 @@
                       position: relative;
                       display: block;
                       width: 100%;
+                      z-index:2;
+                      margin-bottom:30px ;
+
+                    }
+                    .add-other-services-btn{
+                        z-index:2;
                     }
                   
                     .dropdown-btn {
@@ -96,12 +105,13 @@
 
                 .dropdown-content {
                     display: none;
-                  padding: 0px 2px;
+                    padding: 0px 2px;
                     position: absolute;
                     text-align: left;
                     background-color: #f9f9f9;
                     min-width: 160px;
                     z-index: 1;
+
                 }
 
                 .dropdown-content button {
@@ -115,16 +125,40 @@
                     width: 100%;
                     text-align: left;
                     cursor: pointer;
-                    transition-duration: 0.4s;
+                    transition-duration: 0.2s;
                 }
 
                 .dropdown-content button:hover {
                     background-color: #f6b82e;
+                    transform: scale(1.1);
                 }
+                .dropdown-content button:active {
+                    transform: scale(0.97); /* Scale down on press */
+                    transition: transform 0.1s ease;
+                }
+
 
                 .dropdown-container:hover .dropdown-content {
                     display: block;
                 }                 
+    /*    Brief*/
+        .section-subheader-brief{
+            font-weight: normal; /* Set the font weight to normal */
+        font-family: 'Montserrat', sans-serif; /* Ensure consistent font */
+        text-align: left; /* Optional: Align the text to the left */
+        padding: 10px;
+        background-color: #f2f2f2; /* Optional background color */
+        }
+        .section-header-brief{
+        font-weight: bold; /* Set the font weight to normal */
+        font-family: 'Montserrat', sans-serif; /* Ensure consistent font */
+        text-align: left; /* Optional: Align the text to the left */
+        padding: 10px;
+        background-color: #1bb445; /* Optional background color */
+        }
+        .brief-section table{
+            margin:20px 0px ;
+        }
     /*Other*/
 
             .services-title-heading{
@@ -148,12 +182,41 @@
                 font-family: 'Montserrat', sans-serif;
                 font-size: 11px;
                 background-color: #e6e6e6;
-                cursor: move;
+                cursor: -webkit-grab;
+                cursor: -moz-grab;
                 color: black;
                 padding: 8px;
                 font-weight: bold;
                 margin: 20px auto;
                 font-weight: normal;
+                &:active {
+                cursor: move;
+                cursor: -webkit-grabbing;
+                cursor: -moz-grabbing;
+              }
+
+            }
+
+            .sortable-textbox-section{
+                 display: flex; /* Flexbox to align button and table */
+                align-items: left; /* Vertically align the button and table */
+                font-family: 'Montserrat', sans-serif;
+                font-size: 11px;
+                background-color: #e6e6e6;
+                cursor: -webkit-grab;
+                cursor: -moz-grab;
+                 &:active {
+                cursor: move;
+                cursor: -webkit-grabbing;
+                cursor: -moz-grabbing;
+                }
+                color: black;
+                padding: 8px ;
+                font-weight: bold;
+                margin: 20px auto;
+                font-weight: normal;
+
+
 
             }
                 .table-other-services {
@@ -239,6 +302,264 @@
                 .delete-btn-other-services::after {
                     content: "-";
                 }
+
+            /* Default button styles */
+            .duplicate-btn-other-services, 
+            .delete-section-btn-other-services {
+                display: block;
+                margin-bottom: 5px;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 10px;
+                padding: 5px 5px;
+                border-radius: 4px;
+                border: 1px solid #ffffff;
+                transition: background-color 0.25s ease, color 0.25s ease, transform 0.1s ease; /* Add transition for transform */
+            }
+
+            /* Hover effect */
+            .duplicate-btn-other-services:hover,
+            .delete-section-btn-other-services:hover {
+                background-color: #f6b82e;
+                transform: scale(1.1);
+                color: white;
+            }
+
+            /* Press-down animation when active (button pressed) */
+            .duplicate-btn-other-services:active, 
+            .delete-section-btn-other-services:active {
+                transform: scale(0.95); /* Scale down slightly when the button is pressed */
+                transition: transform 0.1s ease; /* Speed up the scale transition when pressed */
+            }
+    /*Cover CSS*/
+
+                .cover-container {
+                    position: relative;
+                    width: 100%; /* Make container responsive */
+                    height: auto; /* Example height, adjust as necessary */
+                    background-color: white; /* For visual reference */
+                    z-index: 1;
+                      outline: #1bb445 solid 10px;
+
+                }
+
+
+                .cover-footer-half-circle {
+                    width: 16vw;
+                    height: 16vw;
+                    background-color: #eab54e; /* Yellow color */
+                    border-top-left-radius: 100%;
+                    z-index: 4;
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    }
+
+                .cover-footer-green {
+                    width: 50vw; /* Adjust width relative to the viewport */
+                    height: 15vw; /* Adjust height relative to the viewport */
+                    background-color: #1bb445; /* Green color */
+                    border-top-right-radius: 10vw; /* Rounded corner on the left side */
+                    position: absolute;
+                    bottom: 0;  /* Align to bottom */
+                    left: 0;    /* Align to left */
+                    z-index: 3;
+                }
+
+
+                /*.cover-wave-green, .cover-wave-yellow {
+                        position: absolute;
+                        top: 30%; 
+                         z-index: 3;
+                    }
+
+                    .cover-wave-green {
+                        right: 0%; 
+                        width: 100%;
+                        height: 100%;
+                    }*/
+
+                .cover-wave-yellow {
+                    right: 0%; /* Align to the right side, adjust as needed */
+                    width: 50.5%; /* Adjust the width as needed */
+                    height: auto;
+                }
+
+                .cover-white-body {
+                    position: absolute;
+                    left: 0%;
+                    bottom: 0%;
+                    top: 32%; /* Position these at 30% from the top */
+                    width: 100%;
+                    height: 100%;
+                    z-index: 2;
+                }
+
+                .cover-logo-img {
+                   position: absolute;
+                    bottom: 10%; /* Adjust the bottom position within the footer */
+                    left: 5%; /* Add a slight margin from the left */
+                    width: 10vw; /* Set a fixed or percentage-based width */
+                    height: auto; /* Maintain the aspect ratio */
+                    background-color: transparent; /* Remove background if not needed */
+                    z-index: 4;
+                }
+
+                .cover-logo-img img {
+                    width: 100%; /* Ensure the image fills the container */
+                    height: auto; /* Maintain the aspect ratio */
+                    max-width: 100%; /* Ensure the image does not exceed its container */
+                    object-fit: contain; /* Ensure it scales properly within its container */
+                }
+                .cover-header-img img {
+                    width: 100vw;       /* Scale up to 80% of the viewport width */
+                    height: auto;      /* Maintain aspect ratio */
+                    max-width: 100%;   /* Allow image to grow up to 100% of its container */
+                    max-height: none;  /* Remove height restriction */
+                    object-fit: contain; /* Ensures the image fits without distortion */
+                     z-index: 3;
+                }
+
+                .cover-contact-info {
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: 2vw;
+                    position: absolute; 
+                    bottom: 5%;
+                    left: 30%;
+                    height: 55%;
+                    width: auto;
+                    font-weight: bold;
+                    color: white;
+                    z-index: 3;
+                }
+
+                .cover-main-title {
+                    font-family: "Anton";
+                    font-weight: 300;
+                    letter-spacing: 8px;
+                    line-height: 100%;
+                    font-style: normal;
+                    font-size: 16vw;  /* Responsive scaling */
+                    color: #1bb445;
+                    text-transform: uppercase;
+                    margin: 0;
+                }
+
+                .cover-client-name {
+                    max-width: 800px;
+                    font-size: 4.8vw;
+                    text-align: center;
+                    font-family: 'Montserrat', sans-serif;
+                    line-height: 100%;
+                    font-weight: bold;
+                    color: #f6b82e;         
+                    z-index: 4;
+                    margin: 10px 0px;
+                }
+
+                .cover-sub-title {
+                    font-size: 4.8vw;  /* Responsive scaling */
+                    text-align: center;
+                    font-family: 'Montserrat', sans-serif;
+                    line-height: 100%;
+                    font-weight: bold;
+                    color: #f6b82e;
+                    margin: 1%;
+                }
+
+                .cover-sub-title, .cover-main-title {
+                    font-weight: bold;
+                    z-index: 3;
+
+                }
+
+                .cover-title-container {
+                    position: absolute;
+                    top: 68%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    text-align: center;
+                    width: 100%;
+                    z-index: 3;
+                }
+
+                @media screen and (min-width: 800px) {
+                .cover-title-container {
+                    max-width: 800px;  /* Cap the container width at 800px */
+                     top: 68%;
+
+                }
+                .cover-main-title {
+                    font-size: 100px;  /* Fixed size for larger screens */
+                }
+                .cover-sub-title {
+                    font-size: 32px;  /* Fixed size for larger screens */
+                }
+                .cover-client-name{
+                    font-size: 32px;  /* Fixed size for larger screens */
+                }
+                .cover-contact-info{
+                    font-size: 12px;
+
+                }
+                .cover-logo-img{
+                    width: 80px;
+                    height: 80px;
+
+                }
+                .cover-footer-green{
+                width: 400px; /* Adjust width relative to the viewport */
+                height: 110px; /* Adjust height relative to the viewport */
+                border-top-right-radius: 60px;
+
+                }
+                .cover-footer-half-circle {
+                width: 140px; /* Adjust width relative to the viewport */
+                height: 110px; /* Adjust height relative to the viewport */
+
+                }
+
+            }
+
+    /* Media query to stop scaling when width is over 800px */
+        @media screen and (min-width: 800px) {
+            .cover-title-container {
+                max-width: 800px;  /* Cap the container width at 800px */
+                 top: 68%;
+
+            }
+            .cover-main-title {
+                font-size: 100px;  /* Fixed size for larger screens */
+            }
+            .cover-sub-title {
+                font-size: 32px;  /* Fixed size for larger screens */
+            }
+            .cover-client-name{
+                font-size: 32px;  /* Fixed size for larger screens */
+            }
+            .cover-contact-info{
+                font-size: 12px;
+
+            }
+            .cover-logo-img{
+                width: 80px;
+                height: 80px;
+
+            }
+            .cover-footer-green{
+            width: 400px; /* Adjust width relative to the viewport */
+            height: 110px; /* Adjust height relative to the viewport */
+            border-top-right-radius: 60px;
+
+            }
+            .cover-footer-half-circle {
+            width: 140px; /* Adjust width relative to the viewport */
+            height: 110px; /* Adjust height relative to the viewport */
+
+            }
+
+        }
+
+
     /*Clean service */
            .task-cell {
                 width: 70%;
@@ -290,6 +611,50 @@
             .delete-btn::after {
                 content: "-";
             }
+            .button-container {
+                display: flex;
+                flex-direction: column; /* Stack buttons on top of each other */
+                margin-right: 10px; /* Adds space between the buttons and the section */
+                align-items: stretch;
+                justify-content:space-evenly;
+            }
+            
+
+
+            /* Default button styles */
+            .duplicate-btn, .delete-section-btn {
+                display: block;
+                margin-bottom: 5px;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 10px;
+                padding: 5px 5px;
+                border-radius: 4px;
+                border: 1px solid #ffffff;
+                transition: background-color 0.25s ease, color 0.25s ease, transform 0.1s ease; /* Add transition for transform */
+            }
+
+            /* Hover effect */
+            .duplicate-btn:hover, .delete-section-btn:hover{
+                background-color: #f6b82e;
+                transform: scale(1.1);
+                color: white;
+            }
+
+            /* Press-down animation when active (button pressed) */
+            .duplicate-btn:active, 
+            .delete-section-btn:active {
+                transform: scale(0.95); /* Scale down slightly when the button is pressed */
+                transition: transform 0.1s ease; /* Speed up the scale transition when pressed */
+            }
+
+
+
+            .selected {
+                  border-left: 8px solid #f6b82e;
+                position: relative; /* Establish a stacking context */
+                z-index: 1; /* Bring the row to the front */
+            }
+
     /* Checkbox cell styles */
             .checkbox-cell {
                 width: 5%;
@@ -470,6 +835,9 @@
                         .action-cell,
                         .action-cell-other-services,
                         .delete-textbox-btn,
+                        .duplicate-btn,
+                        .delete-section-btn,
+                        .button-container,
                         .delete-btn-pricing, .switch-color-btn {
                             display: none;
                         }
@@ -492,7 +860,20 @@
                             .check-row::before, .check-td::before, .highlight-td::before {
                                 display: none !important;  /* Hide any icons or text reminders */
                             }
+                            .selected{
+                                border-left: none ;
+                                 display: none;
+                            }
+                            .editable-textbox-container{
+                                page-break-inside: avoid;
+                            }
+                            @page {
+                                size: A4; /* Define the size as A4 */
+                                margin: 1cm; /* Set page margins */
+                            }
+
                          }
+
     /*Pricing*/
 
             .pricing-title-heading{
@@ -730,6 +1111,7 @@
                 transform: translateY(-50%);
             }
     /*Signature*/
+
             .signature-section {
             margin: 20px 0;
             padding: 0;
@@ -788,7 +1170,7 @@
 
             .editable-textbox {
                 display: flex;
-                margin-bottom: 10px;
+                margin-bottom: 0;
                 width: 100%;
                 align-items: stretch;
             }
@@ -865,6 +1247,57 @@
             }
 
             }
+    /*footer*/
+
+     .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+        max-width: 800px; /* Prevents footer from stretching beyond a fixed width */
+        margin: 20px auto 30px; /* Centers the footer and adds margin to the top */
+        padding: 10px 0px;
+        background-color: white; /* Change as needed  #ff0066*/
+        color: white;
+
+
+    .footer-left {
+        display: flex;
+        align-items: center;
+         background-color: #1bb445;
+        border-radius: 0 30px 0 0;
+        padding: 10px 20px 10px 10px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+    }
+        .footer-left img{
+        width: 53px;
+        height: 50px;
+        margin-right: 20px;
+    }
+    .footer-right {
+        text-align: right;
+        margin-left: 0px;
+        color: black;
+        background-color: white;
+        padding: 10px 0px 10px 0px;
+    }
+
+    .footer-logo {
+        width: 50px;
+        height: 50px;
+        margin: 0px 20px 0px 0px;
+    }
+
+    .footer-info {
+        font-size: 10px;
+    }
+
+
+
+    .footer-right p {
+        margin: 0;
+    }
 
 
 
@@ -879,13 +1312,181 @@
             </button>
             <div class="dropdown-content hidden">
                 <button class="add-section-btn" onclick="addCleanServices()">Add Task Section</button>
-                <button class="add-textbox-btn" onclick="addTextbox()">Add Notes</button>
+                <button class="add-textbox-btn" onclick="addNewNote()">Add Notes</button>
                 <button class="add-other-services-btn" onclick="addOtherServices()">Add Other Services</button>
                 <button class="add-pricing-btn" onclick="addPricing()">Add Price section</button> <!-- New Button -->
                 <button class="download-btn" onclick="printPage()">Download as PDF</button>
                 <button class="switch-color-btn" onclick="switchColor()">Switch Colour</button>
             </div>
         </div>
+    <!-- cover  -->
+        <div class="cover-container">
+
+            <div class="cover-header-img"><img src="https://heyjames101.github.io/turboclean/img/cover-img-full.jpg" alt="cover image"></div>
+
+            <div class="cover-title-container">
+                <!-- <div class="cover-client-name" contenteditable="true">client name goes here</div> -->
+                <div class="cover-main-title">Service<br> Proposal</br></div>
+                 <div class="cover-sub-title">Professional cleaner for <br> every corner of your space.</br> </div>
+            </div>
+
+             <div class="cover-footer-half-circle"></div>
+
+             <div class="cover-footer-green">
+                <div class="cover-logo-img"><img src="https://heyjames101.github.io/turboclean/img/Turbo-Cleaning-logo.png" alt="cover logo"></div>
+                <div class="cover-contact-info">TURBO CLEANING LIMITED <br>turbo.cleaning.nz@gmail.com</div>
+            </div>
+
+        </div>
+
+    <!-- Brief -->
+        <div class="services-title-heading" contenteditable="true">Client</div>
+
+        <div class="brief-section">
+        <table id="brief-details">
+            <tbody>
+                <!-- Header Row for Client Details -->
+                <tr>
+                    <th class="task-cell-brief section-header-brief" contenteditable="true" colspan="2">
+                        Client Details:
+                    </th>
+                </tr>
+
+                <!-- Client Full Name -->
+                <tr>
+                    <td class="task-cell-brief" contenteditable="true">Contact Full Name:</td>
+                    <td class="task-cell-brief" contenteditable="true">Client Name</td>
+                </tr>
+
+                <!-- Client Phone Number -->
+                <tr>
+                    <td class="task-cell-brief" contenteditable="true">Contact Phone Number:</td>
+                    <td class="task-cell-brief" contenteditable="true">021 xxx xxxxx</td>
+                </tr>
+
+                <!-- Client Email Address -->
+                <tr>
+                    <td class="task-cell-brief" contenteditable="true">Contact Email Address:</td>
+                    <td class="task-cell-brief" contenteditable="true">Enter email address</td>
+                </tr>
+
+                <!-- Account Contact -->
+                <tr>
+                    <td class="task-cell-brief" contenteditable="true">Account Contact:</td>
+                    <td class="task-cell-brief" contenteditable="true">Enter email address</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table id="brief-details">
+            <tbody>
+                <tr>
+                    <th class="task-cell-brief section-header-brief" contenteditable="true" colspan="2">
+                        Commencement Date:
+                    </th>
+                </tr>
+                 <tr>
+                    <th class="task-cell-brief section-subheader-brief" contenteditable="true" colspan="2">
+                        15/07/2024
+                    </th>
+                </tr>
+                </tbody>
+            </table>
+
+                <table id="brief-details">
+                <tbody>
+                    <!-- Header Row for Client Details -->
+                    <tr>
+                        <th class="task-cell-brief section-header-brief" contenteditable="true" colspan="2">
+                            Cleaning Schedule:
+                        </th>
+                    </tr>
+                     <tr>
+                        <th class="task-cell-brief section-subheader-brief" contenteditable="true" colspan="2">
+                            The Regular Service Cleaning will be carried out by the Contractor 3 days per week.
+                        </th>
+                    </tr>
+
+                    <!-- Client Full Name -->
+
+                    <tr>
+                        <td class="task-cell-brief" contenteditable="true">Monday
+                        </td>
+                         <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox" checked></td>
+                    </tr>
+                    <tr>
+                        <td class="task-cell-brief" contenteditable="true">Tuesday
+                        </td>
+                         <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
+                    </tr>
+                    <tr>
+                        <td class="task-cell-brief" contenteditable="true">Wednesday
+                        </td>
+                        <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
+                    </tr>
+                    <tr>
+                        <td class="task-cell-brief" contenteditable="true">Thursday
+                        </td>
+                        <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
+                    </tr>
+                    <tr>
+                        <td class="task-cell-brief" contenteditable="true">Friday
+                        </td>
+                        <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
+                    </tr>
+                    <tr>
+                        <td class="task-cell-brief" contenteditable="true">Saturday
+                        </td>
+                        <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <table id="brief-details">
+                <tbody>
+                    <tr>
+                        <th class="task-cell-brief section-header-brief" contenteditable="true" colspan="2">
+                            5 Location:
+                        </th>
+                    </tr>
+                     <tr>
+                        <th class="task-cell-brief section-subheader-brief" contenteditable="true" colspan="2">
+                            Enter address
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+            <table id="brief-details">
+                <tbody>
+                    <tr>
+                        <th class="task-cell-brief section-header-brief" contenteditable="true" colspan="2">
+                            6 Initial Term:
+                        </th>
+                    </tr>
+                     <tr>
+                        <th class="task-cell-brief section-subheader-brief" contenteditable="true" colspan="2">
+                            12 months.
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+            <table id="brief-details">
+                <tbody>
+                    <tr>
+                        <th class="task-cell-brief section-header-brief" contenteditable="true" colspan="2">
+                            7 Renewal Review Date:
+                        </th>
+                    </tr>
+                     <tr>
+                        <th class="task-cell-brief section-subheader-brief" contenteditable="true" colspan="2">
+                            15/06/2025
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+             
+        </div>
+
 
     <!-- CLEANING SCHEDULE  -->
 
@@ -898,8 +1499,13 @@
         <div class="container-clean-services" id="main-container-clean-services">
                 <div id="B" class="list-group">
                 <div class="sortable-clean-section">
+                         <div class="button-container">
+                        <button class="duplicate-btn" onclick="duplicateSection(this)">Duplicate</button>
+                        <button class="delete-section-btn" onclick="deleteSection(this)">Remove</button>
+                        </div>
+
                 <table id="admin-section">
-                    <tr id="row-1" draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+                    <tr id="row-1" draggable="true"  onclick="toggleRowSelection(event, this)"  ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                         <th class="task-cell section-header" contenteditable="true">ADMIN</th>
                         <th class="checkbox-cell" data-label="D"></th>
                         <th class="checkbox-cell" data-label="W"></th>
@@ -908,7 +1514,7 @@
                         <th class="checkbox-cell" data-label="AR"></th>
                         <th class="action-cell"><button class="add-task-btn" onclick="addCleanTask('admin-section')">+</button></th>
                     </tr>
-                    <tr draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+                    <tr draggable="true" onclick="toggleRowSelection(event, this)" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                         <td class="task-cell" contenteditable="true">Check communication book.</td>
                         <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox" checked></td>
                         <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
@@ -917,7 +1523,7 @@
                         <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
                         <td class="action-cell"><button class="delete-btn" onclick="deleteRow(this)">-</button></td>
                     </tr>
-                    <tr draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+                    <tr draggable="true" onclick="toggleRowSelection(event, this)" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                         <td class="task-cell" contenteditable="true">Report any building maintenance issues.</td>
                         <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox" checked></td>
                         <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
@@ -926,7 +1532,7 @@
                         <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
                         <td class="action-cell"><button class="delete-btn" onclick="deleteRow(this)">-</button></td>
                     </tr>
-                    <tr draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+                    <tr draggable="true" onclick="toggleRowSelection(event, this)"  ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                         <td class="task-cell" contenteditable="true">Report any Health & Safety issues.</td>
                         <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox" checked></td>
                         <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
@@ -939,8 +1545,13 @@
                 </div>
 
                 <div class="sortable-clean-section">
+                        <div class="button-container">
+                        <button class="duplicate-btn" onclick="duplicateSection(this)">Duplicate</button>
+                        <button class="delete-section-btn" onclick="deleteSection(this)">Remove</button>
+                        </div>
+
                 <table id="entrance-section">
-                    <tr draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+                    <tr draggable="true" onclick="toggleRowSelection(event, this)" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                         <th class="task-cell section-header" contenteditable="true">1.00 Entrance</th>
                         <th class="checkbox-cell" data-label="D"></th>
                         <th class="checkbox-cell" data-label="W"></th>
@@ -950,7 +1561,7 @@
                         <th class="action-cell"><button class="add-task-btn" onclick="addCleanTask('entrance-section')">+</button></th>
                     </tr>
                     <tr draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
-                        <td class="task-cell" contenteditable="true">1.01 Spot clean doors.</td>
+                        <td class="task-cell" onclick="toggleRowSelection(event, this)"  contenteditable="true">1.01 Spot clean doors.</td>
                         <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox" checked></td>
                         <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
                         <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
@@ -958,7 +1569,7 @@
                         <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>            
                         <td class="action-cell"><button class="delete-btn" onclick="deleteRow(this)">-</button></td>
                     </tr>
-                    <tr draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+                    <tr draggable="true" onclick="toggleRowSelection(event, this)"  ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                         <td class="task-cell" contenteditable="true">1.02 Sanitize door handles.</td>
                         <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox" checked></td>
                         <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
@@ -967,7 +1578,7 @@
                         <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
                         <td class="action-cell"><button class="delete-btn" onclick="deleteRow(this)">-</button></td>
                     </tr>
-                    <tr draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+                    <tr draggable="true" onclick="toggleRowSelection(event, this)"  ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                         <td class="task-cell" contenteditable="true">1.03 Remove any marks from doors and door frames.</td>
                         <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox" checked></td>
                         <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
@@ -976,7 +1587,7 @@
                         <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
                         <td class="action-cell"><button class="delete-btn" onclick="deleteRow(this)">-</button></td>
                     </tr>
-                    <tr draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+                    <tr draggable="true" onclick="toggleRowSelection(event, this)"  ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                         <td class="task-cell" contenteditable="true">1.04 Mop & blade front entrance glass & wash framing.</td>
                         <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox" checked></td>
                         <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
@@ -988,8 +1599,13 @@
                 </table>
                 </div>
                 <div class="sortable-clean-section">
+                                                <div class="button-container">
+                        <button class="duplicate-btn" onclick="duplicateSection(this)">Duplicate</button>
+                        <button class="delete-section-btn" onclick="deleteSection(this)">Remove</button>
+                        </div>
+
                     <table id="retail-shop-section">
-                        <tr id="row-3" draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+                        <tr id="row-3" draggable="true" onclick="toggleRowSelection(event, this)"  ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                             <th class="task-cell section-header" contenteditable="true">2.00 Retail Shop & Changing Room</th>
                             <th class="checkbox-cell" data-label="D"></th>
                             <th class="checkbox-cell" data-label="W"></th>
@@ -998,7 +1614,7 @@
                             <th class="checkbox-cell" data-label="AR"></th>
                             <th class="action-cell"><button class="add-task-btn" onclick="addCleanTask('retail-shop-section')">+</button></th>
                         </tr>
-                        <tr draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+                        <tr draggable="true" onclick="toggleRowSelection(event, this)"  ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                             <td class="task-cell" contenteditable="true">2.01 Vacuum & mop floor area.</td>
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox" checked></td>
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
@@ -1007,7 +1623,7 @@
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
                             <td class="action-cell"><button class="delete-btn" onclick="deleteRow(this)">-</button></td>
                         </tr>
-                        <tr draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+                        <tr draggable="true" onclick="toggleRowSelection(event, this)"  ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                             <td class="task-cell" contenteditable="true">2.02 Spot clean glass partitions.</td>
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox" checked></td>
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
@@ -1016,7 +1632,7 @@
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
                             <td class="action-cell"><button class="delete-btn" onclick="deleteRow(this)">-</button></td>
                         </tr>
-                        <tr draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+                        <tr draggable="true" onclick="toggleRowSelection(event, this)"  ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                             <td class="task-cell" contenteditable="true">2.03 Dust all metalic surface / ledges / shelving (where applicable).</td>
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox" checked></td>
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
@@ -1025,7 +1641,7 @@
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
                             <td class="action-cell"><button class="delete-btn" onclick="deleteRow(this)">-</button></td>
                         </tr>
-                        <tr draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+                        <tr draggable="true" onclick="toggleRowSelection(event, this)"  ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                             <td class="task-cell" contenteditable="true">2.04 Remove all rubbish to disposal point & replace bin liners.</td>
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox" checked></td>
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
@@ -1034,7 +1650,7 @@
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
                             <td class="action-cell"><button class="delete-btn" onclick="deleteRow(this)">-</button></td>
                         </tr>
-                        <tr draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+                        <tr draggable="true" onclick="toggleRowSelection(event, this)"  ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                             <td class="task-cell" contenteditable="true">2.05 Clean & sanitise metalic surface / ledges / shelving (where applicable).</td>
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox" checked></td>
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
@@ -1043,7 +1659,7 @@
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
                             <td class="action-cell"><button class="delete-btn" onclick="deleteRow(this)">-</button></td>
                         </tr>
-                        <tr draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+                        <tr draggable="true" onclick="toggleRowSelection(event, this)"  ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                             <td class="task-cell" contenteditable="true">2.06 Remove any marks from walls.</td>
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox" checked></td>
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
@@ -1052,7 +1668,7 @@
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
                             <td class="action-cell"><button class="delete-btn" onclick="deleteRow(this)">-</button></td>
                         </tr>
-                        <tr draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+                        <tr draggable="true" onclick="toggleRowSelection(event, this)"  ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                             <td class="task-cell" contenteditable="true">2.07 Dust all ledges & fixtures up to two meters including skirting.</td>
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox" checked></td>
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
@@ -1061,7 +1677,7 @@
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
                             <td class="action-cell"><button class="delete-btn" onclick="deleteRow(this)">-</button></td>
                         </tr>
-                        <tr draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+                        <tr draggable="true" onclick="toggleRowSelection(event, this)"  ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                             <td class="task-cell" contenteditable="true">2.08 Dust & vacuum all seating, sofa & lounge etc.</td>
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox" checked></td>
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
@@ -1070,7 +1686,7 @@
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
                             <td class="action-cell"><button class="delete-btn" onclick="deleteRow(this)">-</button></td>
                         </tr>
-                        <tr draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+                        <tr draggable="true" onclick="toggleRowSelection(event, this)"  ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                             <td class="task-cell" contenteditable="true">2.09 Dust all ledges / light fittings above two meters.</td>
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox" checked></td>
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
@@ -1079,7 +1695,7 @@
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
                             <td class="action-cell"><button class="delete-btn" onclick="deleteRow(this)">-</button></td>
                         </tr>
-                        <tr draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+                        <tr draggable="true" onclick="toggleRowSelection(event, this)"  ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                             <td class="task-cell" contenteditable="true">2.10 Remove any cobwebs.</td>
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox" checked></td>
                             <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
@@ -1092,6 +1708,11 @@
 
                 </div>
                 <div class="sortable-clean-section">
+                                                <div class="button-container">
+                        <button class="duplicate-btn" onclick="duplicateSection(this)">Duplicate</button>
+                        <button class="delete-section-btn" onclick="deleteSection(this)">Remove</button>
+                        </div>
+
                      <table id="security-section">
                             <tr id="row-5" draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                                 <th class="task-cell section-header" contenteditable="true">Security at Site</th>
@@ -1102,7 +1723,7 @@
                                 <th class="checkbox-cell" data-label="AR"></th>
                                 <th class="action-cell"><button class="add-task-btn" onclick="addCleanTask('security-section')">+</button></th>
                             </tr>
-                            <tr draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+                            <tr draggable="true" onclick="toggleRowSelection(event, this)"  ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                                 <td class="task-cell" contenteditable="true">At all times ensure external doors (when not in use) are secure.</td>
                                 <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox" checked></td>
                                 <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
@@ -1111,7 +1732,7 @@
                                 <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
                                 <td class="action-cell"><button class="delete-btn" onclick="deleteRow(this)">-</button></td>
                             </tr>
-                            <tr draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+                            <tr draggable="true" onclick="toggleRowSelection(event, this)"  ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                                 <td class="task-cell" contenteditable="true">Doors unlocked for cleaning must be locked after cleaning is completed.</td>
                                 <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox" checked></td>
                                 <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
@@ -1120,7 +1741,7 @@
                                 <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
                                 <td class="action-cell"><button class="delete-btn" onclick="deleteRow(this)">-</button></td>
                             </tr>
-                            <tr draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+                            <tr draggable="true" onclick="toggleRowSelection(event, this)"  ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                                 <td class="task-cell" contenteditable="true">Alarms are set & final check completed to ensure the site is secure prior to leaving.</td>
                                 <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox" checked></td>
                                 <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
@@ -1137,15 +1758,25 @@
         </div>
 
     <!-- add Textbox Container -->
-            <div class="editable-textbox-container">      
-                <div class="editable-textbox">
-                    <div class="editable-content">
-                        <pre class="editable-area-header" contenteditable="true" style="font-weight: bold; font-family: 'Montserrat', sans-serif;">NOTE: * Consumables can be provided and invoiced separately if required.</pre>
-                        <pre class="editable-area" contenteditable="true" style="font-weight: normal; font-family: 'Montserrat', sans-serif;"></pre>
+
+            <div class="editable-textbox-container">   
+            <div id="C" class="list-group">
+                <div class="sortable-textbox-section">   
+                    <div class="button-container">
+                        <button class="duplicate-btn" onclick="duplicateTextboxSection(this)">Duplicate</button>
+                        <button class="delete-section-btn" onclick="deleteTextboxSection(this)">Remove</button>
                     </div>
-                        <button class="delete-textbox-btn" onclick="deleteTextbox(this)">-</button>
+
+                    <div class="editable-textbox">
+                        <div class="editable-content">
+                            <pre class="editable-area-header" contenteditable="true" style="font-weight: bold;font-family: 'Montserrat', sans-serif;">NOTE: * Consumables can be provided and invoiced separately if required.</pre>
+                            <pre class="editable-area" contenteditable="true" style="font-weight: normal; font-family: 'Montserrat', sans-serif;"></pre>
+                        </div>
+                        <!-- <button class="delete-textbox-btn" onclick="deleteTextbox(this)">-</button> -->
+                    </div>
                 </div>
-             </div>
+            </div>
+            </div>
 
 
     <!-- OTHER SERVICES  -->
@@ -1154,6 +1785,12 @@
         <div class="container-other-services" id="main-container-other-services">
                 <div id="A" class="list-group">
                     <div class="sortable-section">
+                     <div class="button-container">
+                <!-- Unique buttons for Other Services -->
+                <button class="duplicate-btn-other-services" onclick="duplicateOtherServicesSection(this)">Duplicate</button>
+                <button class="delete-section-btn-other-services" onclick="deleteOtherServicesSection(this)">Remove</button>
+            </div>
+
                         <table id="floor-care-service-section-other-services">
                             <tr id="row-1" draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                                 <th class="task-cell-other-services section-header-other-services" contenteditable="true">I. FLOOR CARE SERVICE</th>
@@ -1215,6 +1852,11 @@
                     </div>
 
                     <div class="sortable-section">
+                        <div class="button-container">
+                <!-- Unique buttons for Other Services -->
+                <button class="duplicate-btn-other-services" onclick="duplicateOtherServicesSection(this)">Duplicate</button>
+                <button class="delete-section-btn-other-services" onclick="deleteOtherServicesSection(this)">Remove</button>
+            </div>
                         <table id="windows-section-other-services">
                             <tr id="row-1" draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                                 <th class="task-cell-other-services section-header-other-services" contenteditable="true">II. WINDOWS</th>
@@ -1260,6 +1902,11 @@
                     </div>
 
                     <div class="sortable-section">
+                        <div class="button-container">
+                <!-- Unique buttons for Other Services -->
+                <button class="duplicate-btn-other-services" onclick="duplicateOtherServicesSection(this)">Duplicate</button>
+                <button class="delete-section-btn-other-services" onclick="deleteOtherServicesSection(this)">Remove</button>
+            </div>
                         <table id="hygiene-service-section-other-services">
                             <tr id="row-1" draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                                 <th class="task-cell-other-services section-header-other-services" contenteditable="true">III. Hygiene Service</th>
@@ -1289,6 +1936,11 @@
                     </div>
 
                     <div class="sortable-section">
+                        <div class="button-container">
+                <!-- Unique buttons for Other Services -->
+                <button class="duplicate-btn-other-services" onclick="duplicateOtherServicesSection(this)">Duplicate</button>
+                <button class="delete-section-btn-other-services" onclick="deleteOtherServicesSection(this)">Remove</button>
+            </div>
                         <table id="exterior-wash-section-other-services">
                             <tr id="row-1" draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                                 <th class="task-cell-other-services section-header-other-services" contenteditable="true">IV. EXTERIOR WASH</th>
@@ -1329,6 +1981,11 @@
                         </table>
                     </div>
                     <div class="sortable-section">
+                        <div class="button-container">
+                <!-- Unique buttons for Other Services -->
+                <button class="duplicate-btn-other-services" onclick="duplicateOtherServicesSection(this)">Duplicate</button>
+                <button class="delete-section-btn-other-services" onclick="deleteOtherServicesSection(this)">Remove</button>
+            </div>
                         <table id="workstation-section-other-services">
                             <tr id="row-1" draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                                 <th class="task-cell-other-services section-header-other-services" contenteditable="true">V. WORKSTATION SANITIZING</th>
@@ -1345,6 +2002,11 @@
                         </table>
                     </div>
                     <div class="sortable-section">
+                        <div class="button-container">
+                <!-- Unique buttons for Other Services -->
+                <button class="duplicate-btn-other-services" onclick="duplicateOtherServicesSection(this)">Duplicate</button>
+                <button class="delete-section-btn-other-services" onclick="deleteOtherServicesSection(this)">Remove</button>
+            </div>
                         <table id="un-specific-section-other-services">
                             <tr id="row-1" draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                                 <th class="task-cell-other-services section-header-other-services" contenteditable="true">VI. ALL OTHER UN-SPECIFIC CLEAN</th>
@@ -1388,7 +2050,7 @@
                     </tr>
                     <tr id="row-1" draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                         <td class="task-cell-pricing" contenteditable="true">To be invoiced at</td>
-                        <td class="task-cell-pricing" contenteditable="true">$1392.00</td>
+                        <td class="task-cell-pricing" contenteditable="true"><strong>$1392.00</strong></td>
                         <td class="action-cell-pricing"><button class="delete-btn-pricing" onclick="deleteRowPricing(this)">-</button></td>
                     </tr>
                     <tr id="row-1" draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
@@ -1403,7 +2065,7 @@
                     </tr>
                     <tr id="row-1" draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                         <td class="task-cell-pricing" contenteditable="true">Payment terms:</td>
-                        <td class="task-cell-pricing" contenteditable="true"><strong>20th of the month following the invoice date. Invoices are raised on the last day of the calendar month.</strong></td>
+                        <td class="task-cell-pricing" contenteditable="true">20th of the month following the invoice date. Invoices are raised on the last day of the calendar month.</td>
                         <td class="action-cell-pricing"><button class="delete-btn-pricing" onclick="deleteRowPricing(this)">-</button></td>
                     </tr>
                     <tr id="row-1" draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
@@ -1622,7 +2284,7 @@
                                 <tr class="agreement-schedule-row">
                                     <td style="width: 10%;" contenteditable="true"></td>
                                     <td style="width: 10%; text-align: center;" contenteditable="true">a)</td>
-                                    <td style="width: 80%;" contenteditable="true">The price under this agreement (or any amended or updated price under the agreement) shall, effective from 12 months after commencement date of this agreement, and thereafter annually, may be increased by up to 3% before each anniversary date by agreement between the Client and Turbo Cleaning Limited.</td>
+                                    <td style="width: 80%;" contenteditable="true">The price under this agreement (or any amended or updated price under the agreement) shall, effective from 12 months after commencement date of this agreement, and thereafter annually, may be increased by up to 3% before each anniversary date.</td>
                                 </tr>
 
                                 <tr class="agreement-schedule-row">
@@ -1651,39 +2313,52 @@
 
     <!-- signature -->
     <div class="signature-title" contenteditable="true">I have fully read and understand the terms of the maintenance agreement and payment conditions.</div>
-            <div class="signature-section">
-                 <div class="signature-content">
-                        <table class="signature-table" style="width: 100%; margin-top: 30px;">
-                            <tr>
-                                <td style="width: 50%; text-align: left;">
-                                    <div class="signature-row" contenteditable="true">Signed by:</div>
-                                    <div class="signature-row" contenteditable="true">Capri (Australia) Pty Ltd</div>
-                                    <div class="signature-row" contenteditable="true">___________________________</div>
-                                </td>
-                                <td style="width: 50%; text-align: left;">
-                                    <div class="signature-row" contenteditable="true">Signed by:</div>
-                                    <div class="signature-row" contenteditable="true">TURBO CLEANING LIMITED</div>
-                                    <div class="signature-row" contenteditable="true">___________________________</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width: 50%; text-align: left;">
-                                    <div class="signature-row" contenteditable="true">Signed for and on behalf of:</div>
-                                    <div class="signature-row" contenteditable="true">Capri (Australia) Pty Ltd</div>
-                                    <div class="signature-row" contenteditable="true">___________________________</div>
-                                    <div class="signature-row" contenteditable="true">[Print Name]</div>
-                                </td>
-                                <td style="width: 50%; text-align: left;">
-                                    <div class="signature-row" contenteditable="true">Signed for and on behalf of:</div>
-                                    <div class="signature-row" contenteditable="true">TURBO CLEANING LIMITED</div>
-                                    <div class="signature-row" contenteditable="true">___________________________</div>
-                                    <div class="signature-row" contenteditable="true">[Print Name]</div>
-                                </td>
-                            </tr>
-                        </table>
-                        <div class="signature-end-row" style="text-align: left; margin-top: 30px;" contenteditable="true">On this _____14th______ day of _____September_______ 2024</div>
-                    </div>
+       <div class="signature-section">
+                     <div class="signature-content">
+                            <table class="signature-table" style="width: 100%; margin-top: 30px;">
+                                <tr>
+                                    <td style="width: 50%; text-align: left;">
+                                        <div class="signature-row" contenteditable="true">Signed by:</div>
+                                        <div class="signature-row" contenteditable="true">Capri (Australia) Pty Ltd</div>
+                                        <div class="signature-row" contenteditable="true">___________________________</div>
+                                    </td>
+                                    <td style="width: 50%; text-align: left;">
+                                        <div class="signature-row" contenteditable="true">Signed by:</div>
+                                        <div class="signature-row" contenteditable="true">TURBO CLEANING LIMITED</div>
+                                        <div class="signature-row" contenteditable="true">___________________________</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 50%; text-align: left;">
+                                        <div class="signature-row" contenteditable="true">Signed for and on behalf of:</div>
+                                        <div class="signature-row" contenteditable="true">Capri (Australia) Pty Ltd</div>
+                                        <div class="signature-row" contenteditable="true">___________________________</div>
+                                        <div class="signature-row" contenteditable="true">[Print Name]</div>
+                                    </td>
+                                    <td style="width: 50%; text-align: left;">
+                                        <div class="signature-row" contenteditable="true">Signed for and on behalf of:</div>
+                                        <div class="signature-row" contenteditable="true">TURBO CLEANING LIMITED</div>
+                                        <div class="signature-row" contenteditable="true">___________________________</div>
+                                        <div class="signature-row" contenteditable="true">[Print Name]</div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="signature-end-row" style="text-align: left; margin-top: 30px;" contenteditable="true">On this _____14th______ day of _____September_______ 2024</div>
+                        </div>
+
+         
+                </div>
+ <div class="footer">
+        <div class="footer-left">
+            <img src="https://heyjames101.github.io/turboclean/img/Turbo-Cleaning-logo.png" alt="cover logo">
+            <div class="footer-info">
+                <div>TURBO CLEANING LIMITED</div>
+                <div>turbo.cleaning.nz@gmail.com</div>
             </div>
+        </div>
+        <div class="footer-right">
+        </div>
+    </div>
 
 
     <!-- -- JavaScript colour switch -- -->
@@ -1728,6 +2403,15 @@
           sort: true
         });
         Sortable.create(B, {
+          animation: 200,
+          group: {
+            name: "shared",
+            pull: "clone",
+            revertClone: true,
+          },
+          sort: true
+        });
+            Sortable.create(C, {
           animation: 200,
           group: {
             name: "shared",
@@ -1819,9 +2503,167 @@
                     taskCell.textContent = "Task " + i;
                 }
             }
+        //duplicateSection
+        function duplicateSection(button) {
+        // Find the .sortable-clean-section that contains the button
+        const sectionToDuplicate = button.closest('.sortable-clean-section');
+        
+        // Clone the selected .sortable-clean-section
+        const newSection = sectionToDuplicate.cloneNode(true);
+        
+        // Generate a new unique ID for the cloned section
+        const newSectionId = `section-${Date.now()}`;
+        newSection.id = newSectionId;
+        
+        // Update all IDs inside the new section to be unique (optional: change class names too if needed)
+        const newTasks = newSection.querySelectorAll('[id]');
+        newTasks.forEach(task => {
+            const newTaskId = `${task.id}-${Date.now()}`; // Make the new ID unique
+            task.id = newTaskId;
+        });
+        
+        // Add the duplicate button functionality to the cloned section
+        const duplicateBtn = newSection.querySelector('.duplicate-btn');
+        if (duplicateBtn) {
+            duplicateBtn.setAttribute('onclick', 'duplicateSection(this)');
+        }
+
+        // Update event handlers like addCleanTask for the cloned section
+        const taskButtons = newSection.querySelectorAll('.add-task-btn');
+        taskButtons.forEach(button => {
+            const originalTargetSection = button.getAttribute('onclick').match(/'(.*?)'/)[1];
+            const newTargetSection = `${originalTargetSection}-${Date.now()}`;
+            button.setAttribute('onclick', `addCleanTask('${newTargetSection}')`);
+        });
+
+        // Insert the duplicated section right after the original section
+        sectionToDuplicate.insertAdjacentElement('afterend', newSection);
+    }
+
+    // textbox
+
+    // Function to duplicate a textbox section
+        function duplicateTextboxSection(button) {
+            // Find the closest .sortable-textbox-section to duplicate
+            const sectionToDuplicate = button.closest('.sortable-textbox-section');
+
+            // Clone the section
+            const newSection = sectionToDuplicate.cloneNode(true);
+
+            // Generate a new unique ID for the new section
+            const newSectionId = `textbox-section-${Date.now()}`;
+            newSection.id = newSectionId;
+
+            // Update the event handlers in the cloned section
+            const duplicateBtn = newSection.querySelector('.duplicate-btn');
+            const deleteBtn = newSection.querySelector('.delete-section-btn');
+
+            duplicateBtn.setAttribute('onclick', 'duplicateTextboxSection(this)');
+            deleteBtn.setAttribute('onclick', 'deleteTextboxSection(this)');
+
+            // Append the cloned section to the #C container
+            const container = document.getElementById('C');
+            container.appendChild(newSection);
+
+            // Reinitialize Sortable.js to ensure the new section is also sortable
+            initializeSortableTextboxSections();
+            }
+
+            // Function to delete a textbox section
+            function deleteTextboxSection(button) {
+                // Find the closest .sortable-textbox-section and remove it
+                const sectionToDelete = button.closest('.sortable-textbox-section');
+                sectionToDelete.remove();
+            }
+
+            // Initialize Sortable.js for the #C container (for sorting only textbox sections)
+            function initializeSortableTextboxSections() {
+                new Sortable(document.getElementById('C'), {
+                    animation: 150,
+                    handle: '.sortable-textbox-section', // Allow dragging of the textbox sections only
+                    ghostClass: 'dragging', // Optional: Add class while dragging for better visibility
+                    group: {
+                        name: "textbox-sections",  // Unique group for sorting
+                        pull: true,     // Allow pulling items (moving them)
+                        put: false      // Disable putting items in other lists (no cloning)
+                    },
+                    forceFallback: true, // Always use fallback, do not attempt to clone
+                });
+            }
+
+            // Initialize sorting on page load for textbox sections only
+            window.onload = function() {
+                initializeSortableTextboxSections(); // Call the function to initialize sorting for textbox sections
+            };
+
+    // Function to add  Clean Services tasks to a section with drag-and-drop attributes
+            function addCleanTask(sectionId) {
+                const section = document.getElementById(sectionId);
+                const newRow = section.insertRow(-1);
+                
+                // Generate a unique ID for the new row
+                const newRowId = `row-${Date.now()}`;
+
+                // Set the inner HTML with drag-and-drop attributes
+                newRow.setAttribute('draggable', 'true');
+                newRow.setAttribute('ondragstart', 'dragStart(event)');
+                newRow.setAttribute('ondragover', 'allowDrop(event)');
+                newRow.setAttribute('ondrop', 'drop(event)');
+                newRow.setAttribute('id', newRowId); // Assign unique ID to the row
+                newRow.setAttribute('onclick', 'toggleRowSelection(event, this)'); // Toggle row selection on click
+
+
+                // Set the content of the new row
+                newRow.innerHTML = `
+                    <td class="task-cell" contenteditable="true">New Task</td>
+                    <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox" checked></td>
+                    <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
+                    <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
+                    <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
+                    <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
+                    <td class="action-cell"><button class="delete-btn" onclick="deleteRow(this)">-</button></td>
+                `;
+            }
+
+            // Function to handle drag start
+            function dragStart(event) {
+                event.dataTransfer.setData("text", event.target.id);
+            }
+
+            // Allow drop on elements
+            function allowDrop(event) {
+                event.preventDefault();
+            }
+
+            // Drop event handler
+            function drop(event) {
+                event.preventDefault();
+                const data = event.dataTransfer.getData("text");
+                const draggedElement = document.getElementById(data);
+                const dropTarget = event.target.closest('tr');
+
+                // If the drop target exists and is a valid table row, move the dragged element
+                if (dropTarget && draggedElement !== dropTarget) {
+                    dropTarget.insertAdjacentElement('beforebegin', draggedElement);
+                }
+            }
+
+            // Function to delete a task row
+            function deleteRow(button) {
+                const row = button.closest('tr');
+                row.remove();
+            }
+
+
+            function deleteSection(button) {
+                // Find the .sortable-clean-section that contains the delete button
+                const sectionToDelete = button.closest('.sortable-clean-section');
+                
+                // Remove the section from the DOM
+                sectionToDelete.remove();
+            }
 
     // Function to update task numbering after deletion or row change
-
             function addCleanServices() {
                     var container = document.getElementById("B");
                     var newSection = document.createElement("div");
@@ -1829,23 +2671,35 @@
 
                     var sectionId = "clean-services-" + Date.now(); // Unique ID for the new section
 
-                    newSection.innerHTML = `
-                        <table id="${sectionId}">
-                            <tr>
-                                <th class="task-cell section-header" contenteditable="true">Add your area here</th>
-                            <th class="checkbox-cell" data-label="D"></th>
-                            <th class="checkbox-cell" data-label="W"></th>
-                            <th class="checkbox-cell" data-label="FN"></th>
-                            <th class="checkbox-cell" data-label="M"></th>
-                            <th class="checkbox-cell" data-label="AR"></th>
-                            <th class="action-cell"><button class="add-task-btn" onclick="addCleanTask('${sectionId}')">+</button>
-                            </th>
-                            </tr>
-                        </table>
-                    `;
+        newSection.innerHTML = `
+            <div class="button-container">
+                <button class="duplicate-btn" onclick="duplicateSection(this)">Duplicate</button>
+                <button class="delete-section-btn" onclick="deleteSection(this)">Remove</button>
+            </div>
+            <table id="${sectionId}">
+                <tr>
+                    <th class="task-cell section-header" contenteditable="true">Add your area here</th>
+                    <th class="checkbox-cell" data-label="D"></th>
+                    <th class="checkbox-cell" data-label="W"></th>
+                    <th class="checkbox-cell" data-label="FN"></th>
+                    <th class="checkbox-cell" data-label="M"></th>
+                    <th class="checkbox-cell" data-label="AR"></th>
+                    <th class="action-cell"><button class="add-task-btn" onclick="addCleanTask('${sectionId}')">+</button></th>
+                </tr>
+                <tr draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
+                    <td class="task-cell" contenteditable="true">Sample Task</td>
+                    <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox" checked></td>
+                    <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
+                    <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
+                    <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
+                    <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
+                    <td class="action-cell"><button class="delete-btn" onclick="deleteRow(this)">-</button></td>
+                </tr>
+            </table>
+        `;
 
-                    container.appendChild(newSection);
-                }
+        container.appendChild(newSection);
+        }
 
     // Function to remove the section if all tasks are deleted in Clean Services
             // Function to remove the row and check if the section should be removed
@@ -1869,25 +2723,62 @@
 
         var uniqueId = 0; // Global counter for unique IDs
 
-    // Start of addTextbox function
-            function addTextbox() {
-                const container = document.querySelector('.editable-textbox-container');
-                const newTextbox = document.createElement('div');
-                newTextbox.className = 'editable-textbox';
-                newTextbox.innerHTML = `
-                    <div class="editable-content">
-                        <p class="editable-area-header" contenteditable="true" style="font-weight: bold;">NOTE</p>
-                        <p class="editable-area" contenteditable="true"></p>
-                    </div>
-                    <button class="delete-textbox-btn" onclick="deleteTextbox(this)">-</button> 
-                `;
-                    container.appendChild(newTextbox);
+    // Start of addNewNote function
+        function addNewNote() {
+            var container = document.getElementById('C'); // Select the container
 
-            }
-    // Start of deleteTextbox function
-            function deleteTextbox(button) {
-                        button.closest('.editable-textbox').remove();
-                    }
+            // Create a new div for the sortable textbox section
+            var newNote = document.createElement('div');
+            newNote.className = 'sortable-textbox-section'; // Set the class
+
+            // Set the inner content of the new note
+            newNote.innerHTML = `
+            <div class="button-container">
+                    <button class="duplicate-btn" onclick="duplicateTextboxSection(this)">Duplicate</button>
+                    <button class="delete-section-btn" onclick="deleteTextboxSection(this)">Remove</button>
+                </div>
+                <div class="editable-textbox">
+                    <div class="editable-content">
+                    <pre class="editable-area-header" contenteditable="true" style="font-weight: bold;font-family: 'Montserrat', sans-serif;">NOTE</pre>
+                        <pre class="editable-area" contenteditable="true" style="font-weight: normal; font-family: 'Montserrat', sans-serif;"></pre>
+                    </div>
+                    
+                </div>
+            `;
+
+            // Append the new note to the container
+            container.appendChild(newNote);
+
+            // Re-initialize Sortable.js to include the new note (if necessary)
+            initializeSortableNotes();
+        }
+    // Function to delete a textbox (removes the entire sortable-textbox-section)
+        function deleteTextbox(button) {
+            var textbox = button.closest('.sortable-textbox-section');
+            textbox.remove(); // Remove the section
+        }
+
+        // Initialize Sortable.js for the #C container (for sorting notes)
+        function initializeSortableNotes() {
+            new Sortable(document.getElementById('C'), {
+                animation: 150,
+                handle: '.sortable-textbox-section', // Allow dragging of the whole section
+                ghostClass: 'dragging', // Optional: Add class while dragging for better visibility
+                group: {
+                    name: "notes",  // Group for sorting
+                    pull: true,     // Allow pulling items (moving them)
+                    put: false      // Disable putting items in other lists (no cloning)
+                },
+                // No cloning, only moving
+                forceFallback: true, // Always use fallback, do not attempt to clone
+            });
+        }
+
+    // Initialize sorting on page load
+        window.onload = function() {
+            initializeSortableNotes(); // Call the function to initialize sorting for existing and new notes
+        };
+
     // the start of Other Service 
         // Global task counter
             let taskCounter = 1;
@@ -1931,6 +2822,11 @@
                         var sectionId = "other-services-" + Date.now(); // Unique ID for the new section
 
                         newSection.innerHTML = `
+                        <div class="button-container">
+                <!-- Unique buttons for Other Services -->
+                <button class="duplicate-btn-other-services" onclick="duplicateOtherServicesSection(this)">Duplicate</button>
+                <button class="delete-section-btn-other-services" onclick="deleteOtherServicesSection(this)">Remove</button>
+            </div>
                             <table id="${sectionId}">
                                 <tr>
                                     <th class="task-cell-other-services section-header-other-services" contenteditable="true">New Services</th>
@@ -1965,7 +2861,51 @@
 
                 var uniqueId = 0; // Global counter for unique IDs
 
+                    // Function to duplicate a section in the Other Services section
+                // Function to duplicate a section in the Other Services section
+                function duplicateOtherServicesSection(button) {
+                    // Find the closest .sortable-section to duplicate
+                    const sectionToDuplicate = button.closest('.sortable-section');
+
+                    // Clone the section
+                    const newSection = sectionToDuplicate.cloneNode(true);
+
+                    // Generate a new unique ID for the new section and its table
+                    const newSectionId = `other-services-section-${Date.now()}`;
+                    newSection.id = newSectionId;
+
+                    // Generate a unique ID for the table inside the duplicated section
+                    const newTableId = `admin-section-${Date.now()}`;
+                    const table = newSection.querySelector('table');
+                    table.id = newTableId;
+
+                    // Update the "Add Task" button inside the new section to use the new table ID
+                    const addTaskBtn = newSection.querySelector('.add-task-btn-other-services');
+                    addTaskBtn.setAttribute('onclick', `addTaskOtherServices('${newTableId}')`);
+
+                    // Update the event handlers for the Duplicate and Delete buttons in the cloned section
+                    const duplicateBtn = newSection.querySelector('.duplicate-btn-other-services');
+                    const deleteBtn = newSection.querySelector('.delete-section-btn-other-services');
+
+                    duplicateBtn.setAttribute('onclick', 'duplicateOtherServicesSection(this)');
+                    deleteBtn.setAttribute('onclick', 'deleteOtherServicesSection(this)');
+
+                    // Insert the duplicated section right below the original one
+                    sectionToDuplicate.insertAdjacentElement('afterend', newSection);
+                }
+
+                // Function to delete a section in the Other Services section
+                function deleteOtherServicesSection(button) {
+                    // Find the closest .sortable-section and remove it
+                    const sectionToDelete = button.closest('.sortable-section');
+                    sectionToDelete.remove();
+                }
+
+
     // Function to handle dragging
+
+ 
+
             function dragStart(event) {
                 event.dataTransfer.setData('text/plain', event.target.id);
             }
@@ -2057,8 +2997,104 @@
                 });
             });
 
+    // Variable to store selected rows
+    let selectedRows = [];
 
-    // Start of Pricing Schedule 
+// Function to toggle selection on a row (Ctrl+Click or Cmd+Click for multi-select)
+    function toggleRowSelection(event, row) {
+        if (event.ctrlKey || event.metaKey) { // Allow Ctrl (or Cmd on Mac) for multi-select
+            if (row.classList.contains('selected')) {
+                row.classList.remove('selected');
+                selectedRows = selectedRows.filter(r => r !== row);
+            } else {
+                row.classList.add('selected');
+                selectedRows.push(row);
+            }
+        } else {
+            // Clear previous selection if no modifier key is pressed
+            clearSelection();
+            row.classList.add('selected');
+            selectedRows = [row];
+        }
+    }
+
+    // Clear all selections
+    function clearSelection() {
+        selectedRows.forEach(row => row.classList.remove('selected'));
+        selectedRows = [];
+    }
+
+    // Function to handle drag start
+    function dragStart(event) {
+        const row = event.target.closest('tr');
+        if (!row.classList.contains('selected')) {
+            // Select the row if it's not already selected
+            clearSelection();
+            row.classList.add('selected');
+            selectedRows = [row];
+        }
+
+        // Store the selected rows' IDs for transfer
+        event.dataTransfer.setData('text', JSON.stringify(selectedRows.map(r => r.id)));
+    }
+
+    // Allow drop on elements
+    function allowDrop(event) {
+        event.preventDefault();
+    }
+
+    // Handle the drop event
+    function drop(event) {
+        event.preventDefault();
+        const dropTarget = event.target.closest('tr');
+
+        // Get the selected rows' IDs
+        const selectedRowIds = JSON.parse(event.dataTransfer.getData('text'));
+
+        // Insert each selected row before the drop target
+        selectedRowIds.forEach(id => {
+            const row = document.getElementById(id);
+            if (dropTarget && row !== dropTarget) {
+                dropTarget.insertAdjacentElement('beforebegin', row);
+            }
+        });
+
+        // Clear selection after drop
+        clearSelection();
+    }
+
+    // Example function to add new task rows with drag-and-drop and multi-select
+    function addCleanTask(sectionId) {
+        const section = document.getElementById(sectionId);
+        const newRow = section.insertRow(-1);
+        const newRowId = `row-${Date.now()}`;
+
+        // Set the new row's attributes
+        newRow.setAttribute('draggable', 'true');
+        newRow.setAttribute('ondragstart', 'dragStart(event)');
+        newRow.setAttribute('ondragover', 'allowDrop(event)');
+        newRow.setAttribute('ondrop', 'drop(event)');
+        newRow.setAttribute('id', newRowId);
+        newRow.setAttribute('onclick', 'toggleRowSelection(event, this)');
+        newRow.innerHTML = `
+            <td class="task-cell" contenteditable="true">New Task</td>
+            <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox" checked></td>
+            <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
+            <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
+            <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
+            <td class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></td>
+            <td class="action-cell"><button class="delete-btn" onclick="deleteRow(this)">-</button></td>
+        `;
+    }
+
+    // Function to delete a task row
+    function deleteRow(button) {
+        const row = button.closest('tr');
+        row.remove();
+    }
+
+
+// Start of Pricing Schedule 
             function addTaskPricing(sectionId) {
                 var table = document.getElementById(sectionId);
                 var newRow = table.insertRow(-1);
