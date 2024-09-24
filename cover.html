@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+/*Cover CSS*/
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+     
+
+.cover-container {
+    position: relative;
+    width: 100%; /* Make container responsive */
+    height: 950px; /* Example height, adjust as necessary */
+    background-color: white; /* For visual reference */
+    z-index: 1;
+}
+
+
+.cover-footer-half-circle {
+    width: 16vw;
+    height: 16vw;
+    background-color: #eab54e; /* Yellow color */
+    border-top-left-radius: 100%;
+    z-index: 4;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    }
+
+.cover-footer-green {
+    width: 50vw; /* Adjust width relative to the viewport */
+    height: 15vw; /* Adjust height relative to the viewport */
+    background-color: #47a947; /* Green color */
+    border-top-right-radius: 10vw; /* Rounded corner on the left side */
+    position: absolute;
+    bottom: 0;  /* Align to bottom */
+    left: 0;    /* Align to left */
+    z-index: 3;
+}
+
+
+/*.cover-wave-green, .cover-wave-yellow {
+        position: absolute;
+        top: 30%; 
+         z-index: 3;
+    }
+
+    .cover-wave-green {
+        right: 0%; 
+        width: 100%;
+        height: 100%;
+    }*/
+
+.cover-wave-yellow {
+    right: 0%; /* Align to the right side, adjust as needed */
+    width: 50.5%; /* Adjust the width as needed */
+    height: auto;
+}
+
+.cover-white-body {
+    position: absolute;
+    left: 0%;
+    bottom: 0%;
+    top: 32%; /* Position these at 30% from the top */
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.cover-logo-img {
+   position: absolute;
+    bottom: 10%; /* Adjust the bottom position within the footer */
+    left: 5%; /* Add a slight margin from the left */
+    width: 80px; /* Set a fixed or percentage-based width */
+    height: auto; /* Maintain the aspect ratio */
+    background-color: transparent; /* Remove background if not needed */
+    z-index: 4;
+}
+
+.cover-logo-img img {
+    width: 100%; /* Ensure the image fills the container */
+    height: auto; /* Maintain the aspect ratio */
+    max-width: 100%; /* Ensure the image does not exceed its container */
+    object-fit: contain; /* Ensure it scales properly within its container */
+}
+.cover-header-img img {
+    width: 100vw;       /* Scale up to 80% of the viewport width */
+    height: auto;      /* Maintain aspect ratio */
+    max-width: 100%;   /* Allow image to grow up to 100% of its container */
+    max-height: none;  /* Remove height restriction */
+    object-fit: contain; /* Ensures the image fits without distortion */
+     z-index: 3;
+}
+
+.cover-contact-info {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8vw;
+    position: absolute; 
+    bottom: 5%;
+    left: 30%;
+    height: 55%;
+    width: auto;
+    font-weight: bold;
+    color: white;
+    z-index: 3;
+}
+
+.cover-main-title {
+    font-family: "Anton";
+    font-weight: 300;
+    letter-spacing: 8px;
+    line-height: 100%;
+    font-style: normal;
+    font-size: 16vw;  /* Responsive scaling */
+    color: #1bb445;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.cover-client-name {
+    max-width: 800px;
+    font-size: 4.8vw;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 100%;
+    font-weight: bold;
+    color: #f6b82e;         
+    z-index: 4;
+    margin: 10px 0px;
+}
+
+.cover-sub-title {
+    font-size: 4.8vw;  /* Responsive scaling */
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 100%;
+    font-weight: bold;
+    color: #f6b82e;
+    margin: 1%;
+}
+
+.cover-sub-title, .cover-main-title {
+    font-weight: bold;
+    z-index: 3;
+
+}
+
+.cover-title-container {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    z-index: 3;
+}
+
+/* Media query to stop scaling when width is over 800px */
+@media screen and (min-width: 800px) {
+    .cover-title-container {
+        max-width: 800px;  /* Cap the container width at 800px */
+         top: 68%;
+
+    }
+    .cover-main-title {
+        font-size: 100px;  /* Fixed size for larger screens */
+    }
+    .cover-sub-title {
+        font-size: 32px;  /* Fixed size for larger screens */
+    }
+    .cover-client-name{
+        font-size: 32px;  /* Fixed size for larger screens */
+    }
+    .cover-contact-info{
+        font-size: 12px;
+
+    }
+    .cover-logo-img{
+        width: 80px;
+        height: 80px;
+
+    }
+    .cover-footer-green{
+    width: 400px; /* Adjust width relative to the viewport */
+    height: 110px; /* Adjust height relative to the viewport */
+    border-top-right-radius: 60px;
+
+    }
+    .cover-footer-half-circle {
+    width: 140px; /* Adjust width relative to the viewport */
+    height: 110px; /* Adjust height relative to the viewport */
+
+    }
+
+}
+
+    </style>
+
+
+</head>
+
+<body>
+     <div class="cover-container">
+
+        <div class="cover-header-img"><img src="cover-img-full.jpg" alt="cover image"></div>
+
+        <div class="cover-title-container">
+            <!-- <div class="cover-client-name" contenteditable="true">client name goes here</div> -->
+            <div class="cover-main-title">Service<br> Proposal</br></div>
+             <div class="cover-sub-title">Professional cleaner for <br> every corner of your space.</br> </div>
+        </div>
+
+         <div class="cover-footer-half-circle"></div>
+
+         <div class="cover-footer-green">
+            <div class="cover-logo-img"><img src="Turbo-Cleaning-logo.png" alt="cover logo"></div>
+            <div class="cover-contact-info">TURBO CLEANING LIMITED <br>turbo.cleaning.nz@gmail.com</div>
+        </div>
+
+    </div>
+
+</body>
+</html>
