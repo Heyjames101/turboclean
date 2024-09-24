@@ -450,9 +450,15 @@
                     font-size: 8vw; /* Adjust for smaller screens */
                     font-weight: 200;
                     max-width: 600px;
-
-
                     
+                }
+                    .cover-header-img img {
+                    width: 100%;       /* Scale up to 80% of the viewport width */
+                    height: auto;      /* Maintain aspect ratio */
+                    max-width: 100%;   /* Allow image to grow up to 100% of its container */
+                    max-height: none;  /* Remove height restriction */
+                    object-fit: contain; /* Ensures the image fits without distortion */
+                     z-index: 3;
                 }
             }
 
