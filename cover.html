@@ -245,6 +245,8 @@ body {
 </head>
 
 <body>
+                    <button class="download-btn" onclick="printPage()">Download as PDF</button>
+
      <div class="cover-container">
 
         <div class="cover-header-img"><img src="https://heyjames101.github.io/turboclean/img/cover-img-full.jpg" alt="cover image"></div>
@@ -263,6 +265,10 @@ body {
         </div>
 
     </div>
-
+<script>
+           function printPage() {
+        window.print();
+        }
+</script>
 </body>
 </html>
