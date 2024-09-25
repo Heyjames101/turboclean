@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropbox File Uploader</title>
+    <script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        #uploadButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #uploadButton:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dropbox File Uploader</h1>
+        <input type="file" id="fileInput" style="display: none;">
+        <button id="uploadButton">Upload File to Dropbox</button>
+    </div>
+
+    <script>
+        const ACCESS_TOKEN = 'Ysl.B9i143im8sxsxLE5UqOZxFmKuRg-l6o-hTD9KVS4Nx0thTNgdwkOPfxsDLsUTXSTLos2meDS9OYtP0K0Phk7GQsqAR-_FfdtOvvT6jHk5USrTqXAmEcf9wT4eCmxG8dzEtsVlWgdHr2r';
+        const dbx = new Dropbox.Dropbox({ accessToken: ACCESS_TOKEN });
+
+        document.getElementById('uploadButton').addEventListener('click', () => {
+            document.getElementById('fileInput').click();
+        });
+
+        document.getElementById('fileInput').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const fileContent = event.target.result;
+                    uploadToDropbox(file.name, fileContent);
+                };
+                reader.readAsArrayBuffer(file);
+            }
+        });
+
+        function uploadToDropbox(fileName, fileContent) {
+            dbx.filesUpload({path: '/' + fileName, contents: fileContent})
+                .then(response => {
+                    console.log('File uploaded successfully:', response);
+                    alert('File uploaded successfully to Dropbox!');
+                })
+                .catch(error => {
+                    console.error('Error uploading file:', error);
+                    alert('Error uploading file to Dropbox. Please try again.');
+                });
+        }
+    </script>
+</body>
+</html>
