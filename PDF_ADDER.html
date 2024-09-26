@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Header/Footer Adder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            width: 90%;
+            max-width: 500px;
+            color: #ffffff;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .input-group {
+            margin-bottom: 25px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 300;
+        }
+        input[type="file"], input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        input[type="file"]::file-selector-button {
+            background: #4CAF50;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        input[type="file"]::file-selector-button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+        button:active {
+            transform: translateY(-1px);
+        }
+        #downloadLink {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 400;
+        }
+        #downloadLink:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>PDF editor by James</h1>
+
+        <div class="input-group">
+            <label for="pdfFile">Upload PDF:</label>
+            <input type="file" id="pdfFile" accept="application/pdf">
+        </div>
+
+        <div class="input-group">
+            <label for="coverImage">Upload Cover:</label>
+            <input type="file" id="coverImage" accept="image/*">
+        </div>
+
+        <div class="input-group">
+            <label for="footerText">Custom Footer:</label>
+            <input type="text" id="footerText" value="Client initial:____________">
+        </div>
+
+        <button onclick="addHeaderFooter()">Process and Download PDF</button>
+
+        <a id="downloadLink" download="modified_pdf_with_cover_and_footer.pdf">Download Modified PDF</a>
+    </div>
+
+    <script src="https://unpkg.com/pdf-lib"></script>
+    <script>
+    async function addHeaderFooter() {
+        // Get the selected PDF file
+        const inputFile = document.getElementById('pdfFile').files[0];
+        const coverImageFile = document.getElementById('coverImage').files[0];
+
+        if (!inputFile) {
+            alert('Please upload a PDF file.');
+            return;
+        }
+
+        // Read the PDF file as ArrayBuffer
+        const arrayBuffer = await inputFile.arrayBuffer();
+
+        // Load the PDF with pdf-lib
+        const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
+
+        // Get the dimensions of the first page of the PDF
+        const firstPage = pdfDoc.getPages()[0];
+        const { width: pdfWidth, height: pdfHeight } = firstPage.getSize();
+
+        // Add cover image if it's uploaded
+        if (coverImageFile) {
+            const imageBytes = await coverImageFile.arrayBuffer();
+            let coverImage;
+
+            // Check image type and embed accordingly
+            if (coverImageFile.type === 'image/jpeg') {
+                coverImage = await pdfDoc.embedJpg(imageBytes);
+            } else if (coverImageFile.type === 'image/png') {
+                coverImage = await pdfDoc.embedPng(imageBytes);
+            }
+
+            // Insert a new page at the beginning with the same size as the rest of the PDF pages
+            const coverPage = pdfDoc.insertPage(0, [pdfWidth, pdfHeight]);
+
+            // Get the dimensions of the image
+            const imageWidth = coverImage.width;
+            const imageHeight = coverImage.height;
+
+            // Calculate the aspect ratio of the image
+            const aspectRatio = imageWidth / imageHeight;
+
+            // Calculate the width and height to fit the image within the PDF page
+            let scaledWidth, scaledHeight;
+
+            if (aspectRatio > pdfWidth / pdfHeight) {
+                // Image is wider, scale by width
+                scaledWidth = pdfWidth;
+                scaledHeight = scaledWidth / aspectRatio;
+            } else {
+                // Image is taller, scale by height
+                scaledHeight = pdfHeight;
+                scaledWidth = scaledHeight * aspectRatio;
+            }
+
+            // Center the image on the page
+            const x = (pdfWidth - scaledWidth) / 2;
+            const y = (pdfHeight - scaledHeight) / 2;
+
+            // Draw the cover image on the new page, scaled to fit the page
+            coverPage.drawImage(coverImage, {
+                x: x,
+                y: y,
+                width: scaledWidth,
+                height: scaledHeight,
+            });
+        }
+
+        // Get the footer text value
+        const footerText = document.getElementById('footerText').value;
+
+        // Loop through each page and add footer (skip the first page if a cover was added)
+        const pages = pdfDoc.getPages();
+        pages.forEach((page, index) => {
+            // Skip the newly added cover page when adding footers
+            if (index > 0 || !coverImageFile) {
+                const { width, height } = page.getSize();
+                page.drawText(footerText, {
+                    x: 50,
+                    y: 10,
+                    size: 10,
+                    color: PDFLib.rgb(0, 0, 0),
+                });
+            }
+        });
+
+        // Serialize the PDF to bytes
+        const pdfBytes = await pdfDoc.save();
+
+        // Create a blob for the new PDF
+        const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+
+        // Create a link element to download the modified PDF
+        const downloadLink = document.getElementById('downloadLink');
+        downloadLink.href = URL.createObjectURL(blob);
+        downloadLink.style.display = 'block';
+    }
+    </script>
+</body>
+</html>
