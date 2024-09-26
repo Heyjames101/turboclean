@@ -3,78 +3,329 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dropbox File Uploader</title>
+
+    <title>Employee Form</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
     <script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
+
     <style>
+     @media print {
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+        }
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            font-size: 10px;
             margin: 0;
-            background-color: #f0f0f0;
+            padding: 10mm;
         }
-        .container {
+        .form-container {
+            max-width: 170mm;
+            margin: 0 auto;
+            border: 1px solid #000;
+            padding: 10px;
+            background-color: #f9f9f9;
+            page-break-inside: avoid;
+        }
+        .signature-container {
+            margin-top: 10px;
+        }
+        canvas {
+            border: 1px solid #000;
+            width: 100%;
+            height: 60px;
+        }
+        h2 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
             text-align: center;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        #uploadButton {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
         }
-        #uploadButton:hover {
-            background-color: #0056b3;
+        td {
+            padding: 2px;
+            font-size: 10px;
+        }
+        input[type="text"], input[type="date"], input[type="number"], input[type="email"], input[type="tel"] {
+            width: calc(100% - 4px);
+            padding: 2px;
+            box-sizing: border-box;
+            font-size: 10px;
+        }
+        input[type="checkbox"], input[type="radio"] {
+            margin: 0 2px;
+        }
+        .section-title {
+            background-color: #ddd;
+            padding: 3px;
+            font-weight: bold;
+            font-size: 11px;
+        }
+        table, td {
+            border: 1px solid #000;
+        }
+        @media print {
+            #submit-button, #clear-signature, #clear-signature-employee {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Dropbox File Uploader</h1>
-        <input type="file" id="fileInput" style="display: none;">
-        <button id="uploadButton">Upload File to Dropbox</button>
-    </div>
 
-    <script>
-        const ACCESS_TOKEN = 'Ysl.B9i143im8sxsxLE5UqOZxFmKuRg-l6o-hTD9KVS4Nx0thTNgdwkOPfxsDLsUTXSTLos2meDS9OYtP0K0Phk7GQsqAR-_FfdtOvvT6jHk5USrTqXAmEcf9wT4eCmxG8dzEtsVlWgdHr2r';
-        const dbx = new Dropbox.Dropbox({ accessToken: ACCESS_TOKEN });
+<div class="form-container" id="employee-form-container">
+    <form id="employee-form">
+        <h2>Employee Form</h2>
+        <table>
+            <tr>
+                <td class="section-title" colspan="4">Employee File (*Compulsory Field)</td>
+            </tr>
+            <tr>
+                <td>*First Name: <input type="text" name="first_name" ></td>
+                <td>Date of Birth: <input type="date" name="dob"></td>
+                <td colspan="2">Phone: <input type="tel" name="phone"></td>
+            </tr>
+            <tr>
+                <td>*Last Name: <input type="text" name="last_name" ></td>
+                <td>Address: <input type="text" name="address"></td>
+                <td colspan="2">Mobile: <input type="tel" name="mobile"></td>
+            </tr>
+            <tr>
+                <td>Known as: <input type="text" name="known_as"></td>
+                <td colspan="2"><input type="checkbox" name="prefer_known_as"> Prefer to use Known As</td>
+                <td>Postal Code: <input type="text" name="postal_code"></td>
+            </tr>
+            <tr>
+                <td>Gender: 
+                    <input type="radio" name="gender" value="Male"> Male
+                    <input type="radio" name="gender" value="Female"> Female
+                    <input type="radio" name="gender" value="NA"> N/A
+                </td>
+                <td>Email: <input type="email" name="email"></td>
+                <td colspan="2"><input type="checkbox" name="send_payslip"> Send Payslips by Email</td>
+            </tr>
+            <tr>
+                <td>*Commence On: <input type="date" name="commence_on"></td>
+                <td>Job Title: <input type="text" name="job_title"></td>
+                <td>*IRD Number: <input type="text" name="ird_number"></td>
+                <td>*Tax Code: <input type="text" name="tax_code"></td>
+            </tr>
+            <tr>
+                <td>*Bank Account Name: <input type="text" name="bank_account_name"></td>
+                <td>*Account Number: <input type="text" name="account_number"></td>
+                <td>Child Support Start Date: <input type="date" name="child_support_start"></td>
+                <td>Child Support amount/pay: <input type="text" name="child_support_amount"></td>
+            </tr>
+            <tr>
+                <td>*Kiwi Saver (Select One): 
+                    <input type="radio" name="kiwi_saver" value="Opt-In"> Opt-In 
+                    <input type="radio" name="kiwi_saver" value="Opt-Out"> Opt-Out
+                    <input type="radio" name="kiwi_saver" value="Not Qualify"> Not Qualify
+                </td>
+                <td colspan="2">Employee % <input type="text" name="employee_percentage"> Employer % <input type="text" name="employer_percentage"></td>
+                <td>Payroll Giving: <input type="text" name="payroll_giving"></td>
+            </tr>
+        </table>
 
-        document.getElementById('uploadButton').addEventListener('click', () => {
-            document.getElementById('fileInput').click();
-        });
+        <div class="signature-container">
+            <h4>Employee Signature</h4>
+            <canvas id="signature-pad-employee" class="signature-pad"></canvas>
+            <button type="button" id="clear-signature-employee">Clear Signature</button>
+            <input type="hidden" id="signature-data-employee" name="signature_data_employee">
+        </div>
 
-        document.getElementById('fileInput').addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    const fileContent = event.target.result;
-                    uploadToDropbox(file.name, fileContent);
-                };
-                reader.readAsArrayBuffer(file);
-            }
-        });
+        <table style="margin-top: 10px;">
+            <tr>
+                <td class="section-title" colspan="8">This section to be completed by Employer</td>
+            </tr>
+            <tr>
+                <td>*Working Hours</td>
+                <td>Monday <input type="text" name="hours_monday"></td>
+                <td>Tuesday <input type="text" name="hours_tuesday"></td>
+                <td>Wednesday <input type="text" name="hours_wednesday"></td>
+                <td>Thursday <input type="text" name="hours_thursday"></td>
+                <td>Friday <input type="text" name="hours_friday"></td>
+                <td>Saturday <input type="text" name="hours_saturday"></td>
+                <td>Sunday <input type="text" name="hours_sunday"></td>
+            </tr>
+            <tr>
+                <td>*Pay Rate</td>
+                <td colspan="2"><input type="radio" name="pay_rate" value="Hourly"> Hourly Rate</td>
+                <td colspan="2"><input type="radio" name="pay_rate" value="Salary"> Salary</td>
+                <td>Per pay <input type="radio" name="pay_frequency" value="per_pay"> Per year <input type="radio" name="pay_frequency" value="per_year"></td>
+            </tr>
+            <tr>
+                <td>Contract Type</td>
+                <td><input type="checkbox" name="contract_type" value="Casual"> Casual</td>
+                <td><input type="checkbox" name="contract_type" value="Permanent_Part-Time"> Permanent / Part-Time</td>
+                <td><input type="checkbox" name="contract_type" value="Permanent_Full-Time"> Permanent / Full-Time</td>
+                <td colspan="4">Visa Status: <input type="checkbox" name="visa_status" value="Working_Visa"> Working Visa <input type="checkbox" name="visa_status" value="Student_Visa"> Student Visa <input type="checkbox" name="visa_status" value="Resident_Visa"> Permanent/Resident Visa <input type="checkbox" name="visa_status" value="Citizen"> Citizen</td>
+            </tr>
+            <tr>
+                <td>*Leave Entitlement</td>
+                <td colspan="2"><input type="radio" name="leave_entitlement" value="Accrue"> Accrue Leave</td>
+                <td colspan="2"><input type="radio" name="leave_entitlement" value="8_percent"> 8% Pay as you go</td>
+            </tr>
+            <tr>
+                <td>Leave Balance</td>
+                <td colspan="2">Balance <input type="text" name="leave_balance"></td>
+                <td colspan="2">Carried forward date: <input type="date" name="carried_forward_date"></td>
+            </tr>
+            <tr>
+                <td>Annual Leave (hours): <input type="number" name="annual_leave"></td>
+                <td>Sick Leave (days): <input type="number" name="sick_leave"></td>
+                <td>Other Leave (days): <input type="number" name="other_leave"></td>
+                <td colspan="5"></td>
+            </tr>
+            <tr>
+                <td>Regular Allowance(s): <input type="text" name="allowances"></td>
+                <td colspan="7">Regular Deduction(s): <input type="text" name="deductions"></td>
+            </tr>
+        </table>
 
-        function uploadToDropbox(fileName, fileContent) {
-            dbx.filesUpload({path: '/' + fileName, contents: fileContent})
-                .then(response => {
-                    console.log('File uploaded successfully:', response);
-                    alert('File uploaded successfully to Dropbox!');
-                })
-                .catch(error => {
-                    console.error('Error uploading file:', error);
-                    alert('Error uploading file to Dropbox. Please try again.');
-                });
+        <div class="signature-container">
+            <h4>Employer Signature</h4>
+            <canvas id="signature-pad" class="signature-pad"></canvas>
+            <button type="button" id="clear-signature">Clear Signature</button>
+            <input type="hidden" id="signature-data" name="signature_data">
+        </div>
+
+        <button type="submit" id="submit-button">Submit</button>
+    </form>
+</div>
+
+<!-- Include the local html2pdf script -->
+
+
+<script>
+
+   // Initialize Signature Pads
+    var canvasEmployee = document.getElementById('signature-pad-employee');
+    var signaturePadEmployee = new SignaturePad(canvasEmployee);
+    var canvas = document.getElementById('signature-pad');
+    var signaturePad = new SignaturePad(canvas);
+
+    // Clear signature button functionality
+    document.getElementById('clear-signature').addEventListener('click', function () {
+        signaturePad.clear();
+    });
+    document.getElementById('clear-signature-employee').addEventListener('click', function () {
+        signaturePadEmployee.clear();
+    });
+
+    // Handle form submission
+    document.getElementById('employee-form').addEventListener('submit', function (event) {
+    event.preventDefault();  // Prevent form from reloading the page
+
+    var element = document.getElementById('employee-form-container');
+
+    // Use html2canvas and jsPDF to generate the PDF
+    html2canvas(element).then(canvas => {
+        var imgData = canvas.toDataURL('image/png');
+        const { jsPDF } = window.jspdf;  // Correct initialization of jsPDF
+        var pdf = new jsPDF('p', 'mm', 'a4');
+
+        var imgWidth = 210; // A4 width in mm
+        var pageHeight = 295; // A4 height in mm
+        var imgHeight = canvas.height * imgWidth / canvas.width;
+        var heightLeft = imgHeight;
+        var position = 0;
+
+        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+
+        while (heightLeft >= 0) {
+            position = heightLeft - imgHeight;
+            pdf.addPage();
+            pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
         }
-    </script>
+
+        pdf.save('employee_form.pdf');
+    
+
+            // Upload form data to Dropbox
+            var firstName = document.querySelector('[name="first_name"]').value;
+            var lastName = document.querySelector('[name="last_name"]').value;
+            var email = document.querySelector('[name="email"]').value;
+            var signatureData = signaturePad.toDataURL();  // Get the employer signature data
+            var signatureDataEmployee = signaturePadEmployee.toDataURL();  // Get employee signature data
+
+            var formDataContent = `First Name: ${firstName}\nLast Name: ${lastName}\nEmail: ${email}\n`;
+            var formDataBlob = new Blob([formDataContent], { type: 'text/plain' });
+
+            var dbx = new Dropbox.Dropbox({ accessToken: 'Token' });
+
+            // Upload form data to Dropbox
+            dbx.filesUpload({
+                path: `/employee_form_${firstName}_${lastName}.txt`,
+                contents: formDataBlob,
+            }).then(function (response) {
+                console.log('Form data uploaded successfully:', response);
+            }).catch(function (error) {
+                console.error('Error uploading form data:', error);
+            });
+
+            // Upload signatures to Dropbox
+            var signatureBlob = dataURItoBlob(signatureData);
+            var signatureEmployeeBlob = dataURItoBlob(signatureDataEmployee);
+
+            dbx.filesUpload({
+                path: `/employee_signature_${firstName}_${lastName}.png`,
+                contents: signatureEmployeeBlob,
+            }).then(function (response) {
+                console.log('Employee signature uploaded successfully:', response);
+            }).catch(function (error) {
+                console.error('Error uploading employee signature:', error);
+            });
+
+            dbx.filesUpload({
+                path: `/employer_signature_${firstName}_${lastName}.png`,
+                contents: signatureBlob,
+            }).then(function (response) {
+                console.log('Employer signature uploaded successfully:', response);
+            }).catch(function (error) {
+                console.error('Error uploading employer signature:', error);
+            });
+        });
+    });
+
+    // Convert base64 to blob
+    function dataURItoBlob(dataURI) {
+        var byteString = atob(dataURI.split(',')[1]);
+        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+        var ab = new ArrayBuffer(byteString.length);
+        var ia = new Uint8Array(ab);
+        for (var i = 0; i < byteString.length; i++) {
+            ia[i] = byteString.charCodeAt(i);
+        }
+        return new Blob([ab], { type: mimeString });
+    }
+
+    // Resizing the canvas to match device resolution
+    function resizeCanvas() {
+        var ratio = Math.max(window.devicePixelRatio || 1, 1);
+        canvas.width = canvas.offsetWidth * ratio;
+        canvas.height = canvas.offsetHeight * ratio;
+        canvas.getContext('2d').scale(ratio, ratio);
+        signaturePad.clear(); // Reset signature after resizing
+
+        canvasEmployee.width = canvasEmployee.offsetWidth * ratio;
+        canvasEmployee.height = canvasEmployee.offsetHeight * ratio;
+        canvasEmployee.getContext('2d').scale(ratio, ratio);
+        signaturePadEmployee.clear(); // Reset signature after resizing
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();  // Call initially
+
+</script>
+
 </body>
 </html>
